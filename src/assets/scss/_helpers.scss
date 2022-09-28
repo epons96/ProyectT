@@ -1,0 +1,13 @@
+@import "mixins";
+.main-container-layout {
+    @include customContainer();
+}
+
+.pointer {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
