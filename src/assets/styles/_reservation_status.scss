@@ -1,0 +1,57 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+@include mat.core();
+
+// Colores base
+$requested-color: mat.define-palette(mat.$amber-palette, 500); // Amber500
+$confirmed-color: mat.define-palette(mat.$blue-palette, 500); // Blue500;
+$processingPayment-color: mat.define-palette(mat.$green-palette, 500); // Green500;
+$payed-color:  mat.define-palette(mat.$green-palette, 700); // Green700;
+$processingRefund-color:  mat.define-palette(mat.$brown-palette, 300); // Brown300;
+$refunded-color:  mat.define-palette(mat.$brown-palette, 500); // Brown500;
+$cancelled-color:  mat.define-palette(mat.$red-palette, 500); // Red500;
+$expired-color:  mat.define-palette(mat.$gray-palette, 500); // Gray500;
+$consumed-color:  mat.define-palette(mat.$blue-gray-palette, 500); // BlueGray500;
+$modified-color:  mat.define-palette(mat.$teal-palette, 700); // Teal700;
+$processingModification-color:  mat.define-palette(mat.$teal-palette, 600); // Teal600;
+//
+/*
+ * Color del texto, clases usadas para darle color al texto
+ */
+.requested-text { color: mat.get-color-from-palette($requested-color) }
+.confirmed-text { color: mat.get-color-from-palette($confirmed-color) }
+.processingPayment-text { color: mat.get-color-from-palette($processingPayment-color) }
+.payed-text { color: mat.get-color-from-palette($payed-color) }
+.processingRefund-text { color: mat.get-color-from-palette($processingRefund-color) }
+.refunded-text { color: mat.get-color-from-palette($refunded-color) }
+.cancelled-text { color: mat.get-color-from-palette($cancelled-color) }
+.expired-text { color: mat.get-color-from-palette($expired-color) }
+.consumed-text { color: mat.get-color-from-palette($consumed-color) }
+.modified-text { color: mat.get-color-from-palette($modified-color) }
+.processingModification-text { color: mat.get-color-from-palette($processingModification-color) }
+//
+/*
+ * Color del fondo, clases usadas para darle color al fondo
+ */
+.requested-tag { background-color: mat.get-color-from-palette($requested-color) }
+.confirmed-tag { background-color: mat.get-color-from-palette($confirmed-color) }
+.processingPayment-tag { background-color: mat.get-color-from-palette($processingPayment-color) }
+.payed-tag { background-color: mat.get-color-from-palette($payed-color) }
+.processingRefund-tag { background-color: mat.get-color-from-palette($processingRefund-color) }
+.refunded-tag { background-color: mat.get-color-from-palette($refunded-color) }
+.cancelled-tag { background-color: mat.get-color-from-palette($cancelled-color) }
+.expired-tag { background-color: mat.get-color-from-palette($expired-color) }
+.consumed-tag { background-color: mat.get-color-from-palette($consumed-color) }
+.modified-tag { background-color: mat.get-color-from-palette($modified-color) }
+.processingModification-tag { background-color: mat.get-color-from-palette($processingModification-color) }
+//
+/*
+ * Padding establecido para hacer
+ */
+.tag-padding { padding: 4px 10px; border-radius: 5px }
+//
+/*
+ * Color del texto blanco, para usar con las clases de color de fondo
+ */
+.text-white { color: white }
+
