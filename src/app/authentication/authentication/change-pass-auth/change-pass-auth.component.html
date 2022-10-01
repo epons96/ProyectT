@@ -1,0 +1,83 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center stretch" class="login-background">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="login-card mat-elevation-z8">
+            <div fxLayout="column" fxFlexAlign="center center" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start stretch" class="login-header">
+                    <mat-toolbar color="primary" id="toolbarHeader">
+                        <mat-progress-bar *ngIf="this.inLoading" id="progressBar" color="accent" [mode]="'indeterminate'" [value]="valueSpiner" [bufferValue]="bufferValue">
+                        </mat-progress-bar>
+                        <mat-toolbar-row>
+                        </mat-toolbar-row>
+
+                        <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                            <div class="" id="ImgLayout">
+                            </div>
+                        </mat-toolbar-row>
+
+                        <mat-toolbar-row>
+                        </mat-toolbar-row>
+                    </mat-toolbar>
+                </div>
+
+                <form name="login" class="login-form" [style]="'margin-top: -16px; border-radius: 16px !important; background-color: white; border-radius: 16px'">
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                            <p class="mt-3 mb-0" [style]="'font-weight: 600; font-size: 1.8em;'">{{agencyName}}</p>
+                            <p class="mat-body-1 my-0">{{'Renta de autos'}}</p>
+                            <!--              <div class="mt-1" id="lineUnder"></div>-->
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" class="p-4" fxLayoutAlign="center center" style="font-size: 0.8em">
+
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>{{'Pin'}}</mat-label>
+                            <input matInput placeholder="{{'Pin'}}" type="text" required [formControl]="form.controls['pin']" />
+                            <mat-error *ngIf="form.controls['pin'].hasError('required')">
+                                {{'Pin'}}&nbsp;<strong>{{'is required'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>{{'Nueva contraseña'}}</mat-label>
+                            <input matInput placeholder="{{'Nueva contraseña'}}" type="{{ passType }}" required [formControl]="fromPass.controls['password']" />
+                            <mat-icon style="cursor: pointer" matSuffix class="grey-600" (click)="showPass()">
+                                remove_red_eye
+                            </mat-icon>
+                            <mat-error *ngIf="fromPass.controls['password'].hasError('minlength')">
+                                {{'Nueva contraseña'}} <strong>{{'debe tener al menos 6 caracteres'}}</strong>
+                            </mat-error>
+                            <mat-error *ngIf="fromPass.hasError('mismatch')">
+                                {{'Nueva contraseña'}} <strong>{{'deben ser iguales'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" appearance="outline" [ngClass]="{
+                'mat-form-field-invalid': fromPass.hasError('mismatch'),
+                'ng-invalid': fromPass.hasError('mismatch'),
+                'ng-valid': !fromPass.hasError('mismatch')
+              }">
+                            <mat-label>{{'Repita la contraseña'}}</mat-label>
+                            <input matInput placeholder="{{'Repita la contraseña'}}" required type="{{ passType }}" [ngClass]="{ 'ng-invalid': fromPass.hasError('mismatch') }" [formControl]="fromPass.controls['repeat']" />
+                            <mat-icon style="cursor: pointer" matSuffix class="grey-600" (click)="showPass()">
+                                remove_red_eye
+                            </mat-icon>
+                            <mat-error *ngIf="fromPass.hasError('mismatch')">
+                                {{'Contraseña'}} <strong>{{'deben ser iguales'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" class="RegisterBtn" [disabled]="form.invalid" (click)="onSubmit()">
+                            <span class="uppercase color-white">{{'Confirmar'}}</span>
+                        </button>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <a class="mat-body-2 link my-3 primary-color" [routerLink]="['login']">{{'Atrás'}}</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-card>
+
+    </div>
+</div>

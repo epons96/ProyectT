@@ -1,0 +1,71 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center stretch" class="login-background">
+    <div fxLayout="row" fxLayoutAlign="center center">
+
+        <mat-card class="login-card mat-elevation-z8">
+            <div fxLayout="column" fxFlexAlign="center center" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start stretch" class="login-header">
+                    <mat-toolbar color="primary" id="toolbarHeader">
+                        <mat-progress-bar *ngIf="this.inLoading" id="progressBar" color="accent" [mode]="'indeterminate'" [value]="valueSpiner" [bufferValue]="bufferValue">
+                        </mat-progress-bar>
+                        <mat-toolbar-row>
+                        </mat-toolbar-row>
+
+                        <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                            <div class="" id="ImgLayout">
+                            </div>
+                        </mat-toolbar-row>
+                        <mat-toolbar-row>
+                        </mat-toolbar-row>
+                    </mat-toolbar>
+
+                </div>
+
+                <div name="login" class="login-form" [style]="'margin-top: -16px; border-radius: 16px !important; background-color: white; border-radius: 16px'">
+
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                            <p class="mt-3 mb-0" [style]="'font-weight: 600; font-size: 1.8em;'">{{'Bienvenidos'}}</p>
+                            <p class="mat-body-1 my-0">{{'tienda'}}</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" class="p-4" fxLayoutAlign="center center" style="font-size: 0.8em">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>{{'Nombre de usuario'}}</mat-label>
+                            <input matInput placeholder="{{'Nombre de usuario'}}" autocomplete="on" #username [disabled]="inLoading" [formControl]="loginForm.controls['username']" name="username" [autofocus]="true">
+                            <mat-error *ngIf="this.loginForm.controls['username'].invalid">
+                                {{'El nombre de usuario es'}} <strong>{{'requerido'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>{{'Contraseña'}}</mat-label>
+                            <input [type]="this.passwordType" matInput placeholder="{{'Contraseña'}}" #pass [disabled]="inLoading" [formControl]="loginForm.controls['password']" name="password">
+
+                            <mat-icon style="cursor: pointer;" *ngIf="this.passwordType == 'password'" mat-icon-button matSuffix (click)="this.passwordType = 'text'">visibility
+                            </mat-icon>
+
+                            <mat-icon style="cursor: pointer;" *ngIf="this.passwordType == 'text'" mat-icon-button matSuffix (click)="this.passwordType = 'password'">
+                                visibility_off
+                            </mat-icon>
+                            <mat-error *ngIf="this.loginForm.controls['password'].invalid">
+                                {{'La contraseña es'}} <strong>{{'requerido'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid || this.inLoading" (click)="login(loginForm.controls['username'].value, loginForm.controls['password'].value)" class="mt-3 example-full-width uppercase">
+                            {{'Iniciar sesión'}}
+                        </button>
+
+                        <mat-spinner diameter="60" color="primary" *ngIf="this.inLoading"></mat-spinner>
+                        <a class="mat-body-2 link my-3 mb-3 primary-color" [routerLink]="['/auth/email-forgot']">{{'Olvidé mi
+                            contraseña'}}
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </mat-card>
+
+    </div>
+</div>
