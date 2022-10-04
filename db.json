@@ -1,0 +1,87 @@
+{
+    "users": {
+        "admin": {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQwNTo1MTowNi43NjNaIiwicmFuZG9tIjowLjM0ODA4MDU3NDIwNzI2MX0sImlhdCI6MTY2NDg2MjY2NiwiZXhwIjoxNjY0ODk4NjY2fQ.8B-8t1aKEkl9IMH5fcRBfI8eoO4szE_d_pxwz9YfDmM",
+            "profile": {
+                "id": 164,
+                "username": "admin@admin.com",
+                "role": "Admin",
+                "name": "NAme",
+                "lastName": "Lastname",
+                "email": "admin@admin.com",
+                "genre": null
+            }
+        },
+        "client": {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQwNTo1MTowNi43NjNaIiwicmFuZG9tIjowLjM0ODA4MDU3NDIwNzI2MX0sImlhdCI6MTY2NDg2MjY2NiwiZXhwIjoxNjY0ODk4NjY2fQ.8B-8t1aKEkl9IMH5fcRBfI8eoO4szE_d_pxwz9YfDmM",
+            "profile": {
+                "id": 16,
+                "username": "client@client.com",
+                "role": "Client",
+                "name": "Nombre cliente",
+                "lastName": "Lastname",
+                "email": "client@client.com",
+                "genre": "M"
+            }
+        }
+    },
+    "productos": {
+        "meta": {
+            "pagination": {
+                "count": 63,
+                "total": 105
+            }
+        },
+        "data": [
+            {
+                "name": "Refresco Concentrado de Hierro (330ml)",
+                "shortDescription": "Refresco Concentrado de Hierro (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 1
+            },
+            {
+                "name": "Refresco Concentrado de Mate (330ml)",
+                "shortDescription": "Refresco Concentrado de Mate (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 2
+            },
+            {
+                "name": "Refresco Concentrado de Limon (330ml)",
+                "shortDescription": "Refresco Concentrado de Limon (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 3
+            },
+            {
+                "name": "Refresco Concentrado de Cola (330ml)",
+                "shortDescription": "Refresco Concentrado de Cola (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 4
+            },
+            {
+                "name": "Refresco Concentrado de Naranja (330ml)",
+                "shortDescription": "Refresco Concentrado de Naranja (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 5
+            },
+            {
+                "name": "Refresco Concentrado de Uva (330ml)",
+                "shortDescription": "Refresco Concentrado de Uva (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 6
+            },
+            {
+                "name": "Refresco Concentrado de Piña (330ml)",
+                "shortDescription": "Refresco Concentrado de Piña (330ml)",
+                "rating": 5,
+                "market": "international",
+                "id": 7
+            }
+        ]
+    }
+}
