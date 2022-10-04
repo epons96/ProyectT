@@ -4,7 +4,8 @@
             <div fxLayout="column" fxFlexAlign="center center" fxFlex="100">
                 <div fxLayout="column" fxLayoutAlign="start stretch" class="login-header">
                     <mat-toolbar color="primary" id="toolbarHeader">
-                        <mat-progress-bar *ngIf="this.inLoading" id="progressBar" color="accent" [mode]="'indeterminate'" [value]="valueSpiner" [bufferValue]="bufferValue">
+                        <mat-progress-bar *ngIf="this.inLoading" id="progressBar" color="accent"
+                            [mode]="'indeterminate'" [value]="valueSpiner" [bufferValue]="bufferValue">
                         </mat-progress-bar>
                         <mat-toolbar-row>
                         </mat-toolbar-row>
@@ -20,12 +21,13 @@
 
                 </div>
 
-                <form name="login" class="login-form" [style]="'margin-top: -16px; border-radius: 16px !important; background-color: white; border-radius: 16px'">
+                <form name="login" class="login-form"
+                    [style]="'margin-top: -16px; border-radius: 16px !important; background-color: white; border-radius: 16px'">
 
                     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
                         <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">
-                            <p class="mt-3 mb-0" [style]="'font-weight: 600; font-size: 1.8em;'">{{agencyName}}</p>
-                            <p class="mat-body-1 my-0">{{'Renta de autos'}}</p>
+                            <p class="mt-3 mb-0" [style]="'font-weight: 600; font-size: 1.8em;'">{{emailTxt}}</p>
+                            <p class="mat-body-1 my-0">{{'Tienda'}}</p>
                             <!--              <div class="mt-1" id="lineUnder"></div>-->
                         </div>
                     </div>
@@ -33,20 +35,24 @@
                     <div fxLayout="column" class="p-4" fxLayoutAlign="center center" style="font-size: 0.8em">
                         <mat-form-field class="example-full-width mb-3" appearance="outline">
                             <mat-label>{{'Email'}}</mat-label>
-                            <input matInput placeholder="example@domain.com" [disabled]="inLoading" [formControl]="emailForm.controls['email']" name="email" [autofocus]="true" />
+                            <input matInput placeholder="example@domain.com" [disabled]="inLoading"
+                                [formControl]="emailForm.controls['email']" name="email" [autofocus]="true" />
                             <mat-error *ngIf="this.emailForm.controls['email'].hasError('required')">
                                 {{'El email es'}} <strong>{{'requerido'}}</strong></mat-error>
-                            <mat-error *ngIf="this.emailForm.controls['email'].invalid && !this.emailForm.controls['email'].hasError('required')">
+                            <mat-error
+                                *ngIf="this.emailForm.controls['email'].invalid && !this.emailForm.controls['email'].hasError('required')">
                                 {{'El email es'}}&nbsp;
                                 <strong>{{'inválido'}}</strong>
                             </mat-error>
                         </mat-form-field>
 
-                        <button ngClass.gt-sm="px-4" ngClass.lt-md="px-3" style="width: 180px" mat-raised-button color="primary" [disabled]="emailForm.invalid || this.inLoading" (click)="sendForm()">
+                        <button ngClass.gt-sm="px-4" ngClass.lt-md="px-3" style="width: 180px" mat-raised-button
+                            color="primary" [disabled]="emailForm.invalid || this.inLoading" (click)="sendForm()">
                             {{'Enviar'}}
                         </button>
 
-                        <a class="mat-body-2 link my-3 mb-0 primary-color" [routerLink]="['/authentication/login']">{{'Atrás'}}</a>
+                        <a class="mat-body-2 link my-3 mb-0 primary-color"
+                            [routerLink]="['/authentication/login']">{{'Atrás'}}</a>
                     </div>
 
                 </form>

@@ -3,7 +3,6 @@ import { Router } from "@angular/router";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { environment } from "../../../../environments/environment";
 import { AuthenticationService } from "../../../core/authentication/authentication.service";
-import { ShowToastrService } from "src/app/core/show-toastr/show-toastr.service";
 
 @Component({
   selector: "app-email-forgot-pass",
@@ -19,11 +18,10 @@ export class EmailForgotComponent implements OnInit {
   bufferValue = 75;
   agency: any;
   logo: any;
-  agencyName = environment;
+  emailTxt = "Ingrese su email";
 
   constructor(
     private router: Router,
-    private showToastr: ShowToastrService,
     private authService: AuthenticationService,
     private fb: FormBuilder
   ) {
@@ -56,11 +54,6 @@ export class EmailForgotComponent implements OnInit {
     const data = { ...this.emailForm.value };
     this.authService.passForgot(data).subscribe(
       (result: any) => {
-        this.showToastr.showSucces(
-          "Consulte un correo enviado a la cuenta dada para cambiar el password",
-          "Felicidades!",
-          5500
-        );
         this.inLoading = false;
         this.router
           .navigate(["/auth/change-pass"], {

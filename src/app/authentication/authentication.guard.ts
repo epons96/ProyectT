@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Router,
-} from '@angular/router';
-import { LoggedInUserService } from '../core/loggedInUser/logged-in-user.service';
-import { AuthenticationService } from '../core/authentication/authentication.service';
+} from "@angular/router";
+import { LoggedInUserService } from "../core/loggedInUser/logged-in-user.service";
+import { AuthenticationService } from "../core/authentication/authentication.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthenticationGuard implements CanActivate {
   constructor(
@@ -29,8 +29,11 @@ export class AuthenticationGuard implements CanActivate {
     const loggedInUser = this.loggedInUserService.getLoggedInUser();
 
     if (loggedInUser && loggedInUser.role) {
-      if (loggedInUser.role === 'admin') {
-        this.router.navigate(['backend/dashboard']);
+      if (loggedInUser.role === "admin") {
+        this.router.navigate(["admin"]);
+      }
+      if (loggedInUser.role === "client") {
+        this.router.navigate(["client"]);
       }
     } else {
       this.authenticationService.logout();

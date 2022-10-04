@@ -1,20 +1,19 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { environment } from '../../../../environments/environment';
-import { AuthenticationService } from '../../../core/authentication/authentication.service';
-import { LoggedInUserService } from '../../../core/loggedInUser/logged-in-user.service';
-import { ShowToastrService } from '../../../core/show-toastr/show-toastr.service';
+import { Component, OnInit, HostListener } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router, ActivatedRoute, Params } from "@angular/router";
+import { environment } from "../../../../environments/environment";
+import { AuthenticationService } from "../../../core/authentication/authentication.service";
+import { LoggedInUserService } from "../../../core/loggedInUser/logged-in-user.service";
 
 @Component({
-  selector: 'app-change-pass-auth',
-  templateUrl: './change-pass-auth.component.html',
-  styleUrls: ['./change-pass-auth.component.scss'],
+  selector: "app-change-pass-auth",
+  templateUrl: "./change-pass-auth.component.html",
+  styleUrls: ["./change-pass-auth.component.scss"],
 })
 export class ChangePassAuthComponent implements OnInit {
   innerWidth: any;
-  passType = 'password';
-  passType2 = 'password';
+  passType = "password";
+  passType2 = "password";
   applyStyle = false;
   configuration: any = {};
   message!: string;
@@ -22,17 +21,15 @@ export class ChangePassAuthComponent implements OnInit {
   form!: FormGroup;
   fromPass!: FormGroup;
   language = null;
-  // logoLoading = environment.logoLoading;
-  agencyName = environment;
+  Text = "Cambiar contraseña";
 
-  agency: any;
   logo: any;
 
   valueSpiner = 50;
   bufferValue = 75;
   queryParams: Params;
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResize(event: any) {
     this.innerWidth = window.innerWidth;
     this.applyStyle = this.innerWidth <= 600;
@@ -40,19 +37,12 @@ export class ChangePassAuthComponent implements OnInit {
 
   constructor(
     public authService: AuthenticationService,
-    private showToastr: ShowToastrService,
     private fb: FormBuilder,
     private loggedInUserService: LoggedInUserService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.queryParams = this.route.snapshot.queryParams;
-
-    this.agency = localStorage.getItem('agency');
-    if (this.agency) {
-      this.agency = JSON.parse(this.agency);
-      this.logo = this.agency.image ? environment + this.agency.image : null;
-    }
   }
 
   ngOnInit() {
@@ -69,8 +59,8 @@ export class ChangePassAuthComponent implements OnInit {
     );
 
     this.form = this.fb.group({
-      pin: [this.queryParams['pin'], [Validators.required]],
-      email: [this.queryParams['email']],
+      pin: [this.queryParams["pin"], [Validators.required]],
+      email: [this.queryParams["email"]],
       passwords: this.fromPass,
     });
   }
@@ -78,17 +68,16 @@ export class ChangePassAuthComponent implements OnInit {
   onSubmit() {
     this.inLoading = true;
     const data = JSON.parse(JSON.stringify(this.form.value));
-    data.password = data.passwords.password + '';
-    data.repeatPassword = data.passwords.repeat + '';
+    data.password = data.passwords.password + "";
+    data.repeatPassword = data.passwords.repeat + "";
     data.username = data.email;
     delete data.passwords;
     this.authService.changePass(data).subscribe(
       () => {
         this.inLoading = false;
 
-        this.showToastr.showSucces('Password changed correctly', 'OK');
         this.router
-          .navigate([''], {
+          .navigate([""], {
             queryParams: { username: data.email },
           })
           .then((r) => false);
@@ -100,8 +89,8 @@ export class ChangePassAuthComponent implements OnInit {
   }
 
   matchValidator(group: FormGroup) {
-    const pass = group.controls['password'].value;
-    const repeat = group.controls['repeat'].value;
+    const pass = group.controls["password"].value;
+    const repeat = group.controls["repeat"].value;
     if (pass === repeat) {
       return null;
     }
@@ -111,18 +100,18 @@ export class ChangePassAuthComponent implements OnInit {
   }
 
   showPass() {
-    if (this.passType === 'password') {
-      this.passType = 'text';
+    if (this.passType === "password") {
+      this.passType = "text";
     } else {
-      this.passType = 'password';
+      this.passType = "password";
     }
   }
 
   showPass2() {
-    if (this.passType2 === 'password') {
-      this.passType2 = 'text';
+    if (this.passType2 === "password") {
+      this.passType2 = "text";
     } else {
-      this.passType2 = 'password';
+      this.passType2 = "password";
     }
   }
 }

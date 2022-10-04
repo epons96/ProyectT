@@ -12,7 +12,6 @@ import { LoggedInUserService } from "../../core/loggedInUser/logged-in-user.serv
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { environment } from "../../../environments/environment";
-import { ShowToastrService } from "../../core/show-toastr/show-toastr.service";
 
 @Component({
   selector: "app-login",
@@ -87,7 +86,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
           //   : this.arrayOfThemes[0];
           // document.getElementById("BodyAppClass").className =
           //   this.themeConfigService.selectedTheme.className;
-          this.router.navigate(["/backend/dashboard"]).then();
+          this.router.navigate(["/admin"]).then();
         } else {
           this.authService.setLogout();
         }
