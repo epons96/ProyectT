@@ -1,0 +1,19 @@
+image: nikolaik/python-nodejs:latest
+
+cache:
+  paths:
+    - node_modules
+
+deploy_cjiPortal:
+  only:
+    - main
+  when: always
+  script:
+    - yarn install
+    - yarn build
+    - curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+    - unzip awscli-bundle.zip
+    - ./awscli-bundle/install -b ~/bin/aws
+    - export PATH=~/bin:$PATH
+    - aws s3 sync --acl public-read --metadata-directive REPLACE --cache-control max-age=1200,public dist/work1 s3://cji.guajiritos.com --delete
+    - aws cloudfront create-invalidation --distribution-id E3R2XXQSN4E4N5 --paths "/*"
