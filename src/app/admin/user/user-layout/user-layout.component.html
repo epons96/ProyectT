@@ -1,0 +1,19 @@
+<div>
+    <mat-card class="p-1 mat-elevation-z0" style="border-radius: 8px !important;">
+        <mat-tab-group>
+            <mat-tab>
+
+                <!-- <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon">group</mat-icon>
+                    {{'Mis usuarios'}}
+                </ng-template> -->
+
+                <ng-template matTabContent>
+                    <app-user-home [role]="'admin'" [disability]="false"></app-user-home>
+                </ng-template>
+
+            </mat-tab>
+
+        </mat-tab-group>
+    </mat-card>
+</div>

@@ -1,0 +1,134 @@
+<h2 mat-dialog-title *ngIf="isEditing" class="dialog-title">{{ 'Editar Usuario' }}</h2>
+<h2 mat-dialog-title *ngIf="!isEditing" class="dialog-title">
+    {{ this.selectedTitle || 'Crear nuevo Usuario' }}
+</h2>
+
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <div fxLayout="column" fxLayoutAlign="space-around stretch">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="gappx">
+                <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="outline">
+                    <mat-label>{{ 'Nombre' }}</mat-label>
+                    <input matInput placeholder="{{ 'Nombre' }}" [formControl]="form.controls['name']" required (keypress)="utilsService.keyPressAlpha($event)" />
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="form.controls['name'].hasError('required')">
+                        {{ 'El nombre del usuario es' }} <strong>{{ 'requerido' }}</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="outline">
+                    <mat-label>{{ 'Apellidos' }}</mat-label>
+                    <input matInput placeholder="{{ 'Apellidos' }}" [formControl]="form.controls['lastname']" required (keypress)="utilsService.keyPressAlpha($event)" />
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="form.controls['lastname'].hasError('required')">
+                        {{ 'El apellido del usuario es' }} <strong>{{ 'requerido' }}</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="gappx">
+                <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="outline">
+                    <mat-label>{{ 'Correo Electrónico' }} *</mat-label>
+                    <input matInput placeholder="{{ 'Correo Electrónico' }} *" type="email" [formControl]="form.controls['email']" />
+                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-error *ngIf="form.controls['email'].hasError('required')">
+                        {{ 'El email es' }} <strong>{{ 'requerido' }}</strong>
+                    </mat-error>
+                    <mat-error *ngIf="form.controls['email'].hasError('email')">
+                        {{ 'El email es' }} <strong>{{ 'inválido' }}</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="outline">
+                    <mat-label>{{ 'Teléfono' }}</mat-label>
+                    <input matInput type="number" placeholder="{{ 'Teléfono' }}" (input)="validatePhone(form.controls['phone'].value)" [formControl]="form.controls['phone']" />
+                    <mat-icon matSuffix>local_phone</mat-icon>
+                    <mat-error *ngIf="form.controls['phone'].hasError('invalidCellphone')">
+                        {{ 'El Teléfono es' }} <strong>{{ 'inválido' }}</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field fxFlex="25" appearance="outline" *ngIf="loggedInUser.role == 'admin'">
+                <mat-label>{{ 'Rol' }}</mat-label>
+                <mat-select [disabled]="isPerfil" placeholder="{{ 'Rol' }}" name="role" [formControl]="form.controls['role']" required (selectionChange)="onSelectRol()">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{ role.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls['role'].hasError('required')">
+                    {{ 'El rol del Usuario es' }} <strong>{{ 'requerido' }}</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div fxLayout="row" class="mt-4" fxLayoutAlign="start start">
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>{{ 'Usuario' }}</mat-label>
+                    <input matInput placeholder="{{ 'Nombre de usuario' }}" matTooltip="{{ 'Elija un nombre de usuario único, no es editable' }}" [readonly]="this.isEditing && !loggedInUser.superAdmin" required autocomplete="false" [formControl]="form.controls['username']"
+                    />
+                    <mat-error *ngIf="form.controls['username'].hasError('required')">
+                        {{ 'El Usuario es' }} <strong>{{ 'requerido' }}</strong>
+                    </mat-error>
+                    <mat-error *ngIf="form.controls['username'].hasError('pattern')">
+                        {{ 'El Usuario es' }} <strong>{{ 'requerido' }}</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="isEditing" class="mb-3">
+                <mat-slide-toggle class="py-3" fxFlex="48" color="primary" [formControl]="updatePass">
+                    {{ 'Desea modificar la contraseña?' }}
+                </mat-slide-toggle>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between start" class="mt-2" fxLayoutGap="gappx" *ngIf="(isEditing && updatePass.value) || !isEditing">
+                <mat-form-field appearance="outline" fxFlex="48">
+                    <mat-label>{{ 'Contraseña' }}</mat-label>
+                    <input matInput placeholder="{{ 'Contraseña' }}" [type]="passwordType" autocomplete="false" [formControl]="formPass.controls['password']" />
+                    <mat-error *ngIf="formPass.controls['password'].hasError('required')">
+                        {{ 'La contraseña es' }} <strong>{{ 'requerida' }}</strong>
+                    </mat-error>
+                    <mat-error *ngIf="formPass.controls['password'].hasError('minlength')">
+                        {{ 'La contraseña debe tener al menos' }} <strong>{{ '8 caracteres' }}</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="48" [ngClass]="{
+            'mat-form-field-invalid': formPass.hasError('mismatch'),
+            'ng-invalid': formPass.hasError('mismatch'),
+            'ng-valid': !formPass.hasError('mismatch')
+          }">
+                    <mat-label>{{ 'Repetir Contraseña' }}</mat-label>
+                    <input matInput placeholder="{{ 'Repetir Contraseña' }}" [type]="passwordType" [ngClass]="{ 'ng-invalid': formPass.hasError('mismatch') }" [formControl]="formPass.controls['repeat']" />
+                    <mat-error *ngIf="formPass.controls['repeat'].hasError('required')">
+                        {{ 'La contraseña es' }} <strong>{{ 'requerida' }}</strong>
+                    </mat-error>
+                    <mat-error *ngIf="formPass.controls['repeat'].hasError('minlength')">
+                        {{ 'La contraseña debe tener al menos' }} <strong>{{ '8 caracteres' }}</strong>
+                    </mat-error>
+                    <mat-error *ngIf="formPass.hasError('mismatch')">
+                        {{ 'Las contraseñas no son' }} <strong>{{ 'iguales' }}</strong>
+                    </mat-error>
+                    <mat-icon (click)="onChangeType()" matSuffix style="color: #616161; cursor: pointer !important;">
+                        remove_red_eye
+                    </mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100">
+        <button color="primary" mat-stroked-button mat-dialog-close class="uppercase">
+            {{ 'Cancelar' }}
+        </button>
+
+        <button class="ml-3" mat-raised-button color="primary" cdkFocusInitial [disabled]="this.form.invalid" (click)="onEditUser()">
+            <mat-icon *ngIf="animate_button" class="spin">refresh</mat-icon>
+            <span class="uppercase">
+                {{ 'Guardar' }}
+            </span>
+        </button>
+    </div>
+</div>

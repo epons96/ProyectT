@@ -1,0 +1,136 @@
+<div>
+    <mat-toolbar>
+        <mat-toolbar-row *ngIf="!selection.selected.length && !showFilterUser">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                <span class="mat-title m-0">{{'Lista de Usuarios'}}</span>
+                <div fxHide.xs>
+                    <button mat-button color="primary" (click)="showSearchForm()">
+                        <mat-icon aria-label="Example icon-button with a heart icon">filter_list</mat-icon>
+                        {{'Filtrar'}}
+                    </button>
+                    <button mat-button color="primary" (click)="onRefreshData()">
+                        <mat-icon aria-label="Example icon-button with a heart icon">refresh</mat-icon>
+                        {{'Refrescar'}}
+                    </button>
+                    <button mat-button color="primary" (click)="onCreateUser()" *ngIf="loggedInUser.role == 'admin' && this.loggedInUser.canCreateUsers && !disability">
+                        <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                        {{'Adicionar'}}
+                    </button>
+                </div>
+                <div fxHide fxShow.xs>
+                    <button mat-icon-button color="primary" (click)="showSearchForm()">
+                        <mat-icon aria-label="Example icon-button with a heart icon">filter_list</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="onRefreshData()">
+                        <mat-icon aria-label="Example icon-button with a heart icon">refresh</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="onCreateUser()" *ngIf="loggedInUser.role == 'admin' && this.loggedInUser.canCreateUsers">
+                        <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row *ngIf="showFilterUser && !selection.selected.length">
+            <form class="example-full-width" [formGroup]="searchForm">
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                    <button mat-icon-button color="primary">
+                        <mat-icon matPrefix>search</mat-icon>
+                    </button>
+                    <input [formControl]="searchForm.controls['textCtrl']" placeholder="{{'Escriba su texto de búsqueda'}}" class="example-full-width search-input" type="text" autofocus>
+                    <div>
+                        <button mat-icon-button color="primary" (click)="hideSearchForm()">
+                            <mat-icon aria-label="Cerrar">close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row *ngIf="selection.selected.length">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                <span fxHide.xs class="mat-title m-0">1&nbsp;{{'elemento seleccionado'}}</span>
+                <div>
+                    <button mat-button color="primary" *ngIf="loggedInUser.role === 'admin' && this.loggedInUser.canEditUsers" (click)="onEditUser()">
+                        <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                        <span class="mat-button">{{'Editar'}}</span>
+                    </button>
+                    <button mat-button color="warn" (click)="onRemoveUser()" *ngIf="loggedInUser.id !== selection.selected[0].id">
+                        <mat-icon aria-label="Remove">remove</mat-icon>
+                        <span class="mat-button">{{'Desabilitar'}}</span>
+                    </button>
+
+                    <button mat-button color="warn" (click)="onEnableUser()" *ngIf="loggedInUser.id !== selection.selected[0].id && this.loggedInUser.canCreateUsers && selection.selected[0].ParentId == this.loggedInUser.id && disability">
+                        <mat-icon aria-label="Remove">add_task</mat-icon>
+                        <span class="mat-button">{{'Habilitar'}}</span>
+                    </button>
+                </div>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="responsive_table">
+        <table mat-table [dataSource]="dataSourceUser" matSort matSortDisableClear>
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th style="width: 10%;" mat-header-cell *matHeaderCellDef>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox color="primary" (click)="$event.stopPropagation();" (change)="$event ? masterToggle(row) : null" [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="username">
+                <th style="width: 30%;" mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{'Usuario'}}
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="gappx">
+                        <span class="mat-body-2" style="text-transform: capitalize;">
+                            {{(element.lastname) ? element.name + ' ' + element.lastname : element.name}}
+                        </span>
+                        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx">
+                            <strong><span class="mat-caption">
+                                    {{element?.username || ''}}
+                                </span></strong>
+                        </div>
+
+                        <span class="mat-caption" style="text-transform: capitalize;">
+                            {{(element.cellphone) ? element.cellphone : ''}}
+                        </span>
+                    </div>
+                </td>
+            </ng-container>
+
+            <!-- Position Column -->
+
+            <ng-container matColumnDef="role">
+                <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Rol
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.role==='admin'">{{'Admin'}}</span>
+                    <span *ngIf="element.role==='client'">{{'Cliente'}}</span>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="canCreate">
+                <th style="width: 20%;" mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{'Crea usuario'}}
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.canCreate}}</td>
+            </ng-container>
+
+            <!-- Weight Column -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedUserColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedUserColumns;" (click)="masterToggle(row)"></tr>
+        </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+</div>

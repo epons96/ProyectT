@@ -1,0 +1,51 @@
+@import "../../../../assets/styles/variable.scss";
+
+app-user-home {
+    table {
+        width: 100%;
+    }
+
+    tr.mat-row {
+        height: 65px;
+        min-height: 65px;
+    }
+
+    .mat-column-select {
+        overflow: initial;
+    }
+
+    mat-toolbar-row {
+        background-color: white;
+    }
+
+    .example-full-width {
+        width: 100%;
+    }
+
+    .search-input {
+        font-size: 20px;
+        outline: none; // removes blue outline on focus
+        border: 0; // removes border
+        box-shadow: none;
+    }
+
+    .avatar-table {
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    .default-avatar {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50%;
+        background-color: #e1f5fe;
+        color: #e1f5fe;
+
+        mat-icon {
+            height: 24px;
+            width: 24px;
+            font-size: 24px;
+            line-height: 24px;
+        }
+    }
+}

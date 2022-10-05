@@ -1,0 +1,63 @@
+<h2 mat-dialog-title *ngIf="isEditing" class="dialog-title">{{ 'Editar Cliente' }}</h2>
+<h2 mat-dialog-title *ngIf="!isEditing" class="dialog-title">{{ 'Crear nuevo Cliente' }}</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="form" class="example-full-width">
+        <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap=".5rem grid">
+
+            <ngp-image-picker [_config]="imagePickerConf" ($imageChanged)="onImage($event)"></ngp-image-picker>
+
+            <mat-form-field class="example-full-width" appearance="outline" fxFlex="50">
+                <mat-label>{{ 'Nombre' }}</mat-label>
+                <input matInput placeholder="{{ 'Nombre' }}" required [formControl]="form.controls['name']" />
+                <mat-error *ngIf="form.controls['name'].hasError('required')">
+                    {{ 'El nombre del cliente es' }} <strong>{{ 'requerido' }}</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline" fxFlex="50">
+                <mat-label>{{ 'Apellidos' }}</mat-label>
+                <input matInput placeholder="{{ 'Apellidos' }}" required [formControl]="form.controls['lastname']" />
+                <mat-error *ngIf="form.controls['lastname'].hasError('required')">
+                    {{ 'El apellido del cliente es' }} <strong>{{ 'requerido' }}</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline" fxFlex="50">
+                <mat-label>{{ 'Correo Electrónico del Cliente' }}</mat-label>
+                <input matInput placeholder="{{ 'Correo Electrónico del Cliente' }}" type="email" required [formControl]="form.controls['email']" />
+                <mat-error *ngIf="form.controls['email'].hasError('email')">
+                    {{ 'El email no es' }} <strong>{{ 'válido' }}</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline" fxFlex="50">
+                <mat-label>{{ 'Teléfono del Cliente' }}</mat-label>
+                <input matInput placeholder="{{ 'Teléfono del Cliente' }}" (input)="validatePhone(form.controls['phone'].value)" (change)="formatPhone(form.controls['phone'].value)" [formControl]="form.controls['phone']" />
+                <mat-error *ngIf="form.controls['phone'].hasError('invalidCellphone')">
+                    {{ 'El Teléfono no es' }} <strong>{{ 'válido' }}</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div fxFlex="100">
+                <mat-divider></mat-divider>
+            </div>
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100">
+        <button color="primary" mat-stroked-button mat-dialog-close class="uppercase">
+            {{ 'Cancelar' | translate }}
+        </button>
+
+        <button class="ml-3 uppercase" mat-raised-button color="primary" [disabled]="form.invalid" cdkFocusInitial (click)="onEditUser()">
+            <mat-icon *ngIf="animate_button" class="spin">refresh</mat-icon>
+            <span>
+                {{ 'Guardar' | translate }}
+            </span>
+        </button>
+    </div>
+</mat-dialog-actions>
