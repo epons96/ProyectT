@@ -18,19 +18,19 @@
                     <mat-label>
                         <span>{{ 'Nombre' }}</span>
                     </mat-label>
-                    <input type="text" matInput [formControl]="form.get('ExternalUserName')" placeholder="{{ 'Nombre' }}" />
+                    <input type="text" matInput [formControl]="form.get('name')" placeholder="{{ 'Nombre' }}" />
                 </mat-form-field>
                 <mat-form-field fxFlex="100" fxFlex.lt-md="100" appearance="outline">
                     <mat-label>
-                        <span>{{ 'Apellido' }}</span>
+                        <span>{{ 'Cantidad' }}</span>
                     </mat-label>
-                    <input type="text" matInput [formControl]="form.get('ExternalUserLastName')" placeholder="{{ 'Apellido' }}" />
+                    <input type="number" matInput [formControl]="form.get('quantity')" min="1" placeholder="{{ 'Cantidad' }}" />
                 </mat-form-field>
                 <mat-form-field fxFlex="100" fxFlex.lt-md="100" appearance="outline">
                     <mat-label>
-                        <span>{{ 'Ocupación' }}</span>
+                        <span>{{ 'Mercado' }}</span>
                     </mat-label>
-                    <input type="text" matInput [formControl]="form.get('Occupation')" placeholder="{{ 'Ocupación' }}" />
+                    <input type="text" matInput [formControl]="form.get('market')" placeholder="{{ 'Mercado' }}" />
                 </mat-form-field>
 
                 <mat-form-field fxFlex="100" fxFlex.lt-md="100" appearance="outline">

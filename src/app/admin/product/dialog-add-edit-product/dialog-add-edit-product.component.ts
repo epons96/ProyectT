@@ -51,28 +51,19 @@ export class DialogAddEditProductComponent implements OnInit, OnDestroy {
   private createForm(): void {
     if (!this.isEditing) {
       this.form = this.fb.group({
-        ExternalUserName: [null, [Validators.required]],
-        ExternalUserLastName: [null, [Validators.required]],
-        Occupation: [null, [Validators.required]],
+        name: [null, [Validators.required]],
+        quantity: [null, [Validators.required]],
+        market: [null, [Validators.required]],
         description: [null, []],
       });
     } else {
       this.form = this.fb.group({
-        ExternalUserName: [
-          this.selectedProducts.ExternalUserName,
-          [Validators.required],
-        ],
-        ExternalUserLastName: [
-          this.selectedProducts.ExternalUserLastName,
-          [Validators.required],
-        ],
-        Occupation: [this.selectedProducts.Occupation, [Validators.required]],
+        name: [this.selectedProducts.name, [Validators.required]],
+        quantity: [this.selectedProducts.quantity, [Validators.required]],
+        market: [this.selectedProducts.market, [Validators.required]],
         description: [this.selectedProducts.description, []],
       });
     }
-    this.form.get("startDate").valueChanges.subscribe((data) => {});
-
-    this.form.get("endDate").valueChanges.subscribe((data) => {});
   }
 
   public onSave(): void {

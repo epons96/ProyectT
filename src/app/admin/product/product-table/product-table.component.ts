@@ -14,7 +14,7 @@ import { BreadcrumbService } from "../../layout/breadcrumd/service/breadcrumb.se
 import { ConfirmationDialogComponent } from "../../confirmation-dialog/confirmation-dialog.component";
 import { IPagination } from "src/app/core/interfaces/pagination.class";
 import { ProductService } from "src/app/core/product/product.service";
-import { ToastrService } from "ngx-toastr";
+// import { ToastrService } from "ngx-toastr";
 import { DialogShowProductComponent } from "../dialog-show-product/dialog-show-product.component";
 import { DialogAddEditProductComponent } from "../dialog-add-edit-product/dialog-add-edit-product.component";
 
@@ -39,14 +39,9 @@ export class ProductTableComponent implements OnInit, OnDestroy {
   initialPage = 10;
   pageSizeOptions: number[] = [this.initialPage, 25, 100, 1000];
   searchElementCount = 0;
-  @ViewChild(MatPaginator, {
-    static: true,
-  })
-  paginator: MatPaginator;
-  @ViewChild(MatSort, {
-    static: true,
-  })
-  sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
   isLoading = false;
   query: IPagination = {
     limit: this.initialPage,
@@ -62,18 +57,16 @@ export class ProductTableComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = [
     "select",
-    "createdAt",
-    "ExternalUserName",
+    "name",
     "quantity",
-    "description",
+    "market",
     "actions",
   ];
   displayedColumnsFilters: string[] = [
     "selectF",
-    "createdAtF",
-    "ExternalUserNameF",
+    "nameF",
     "quantityF",
-    "descriptionF",
+    "marketF",
     "actionsF",
   ];
 
@@ -83,7 +76,7 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     private breadcrumbService: BreadcrumbService,
     public dialog: MatDialog,
     public utilsService: UtilsService,
-    private showToastr: ToastrService,
+    // private showToastr: ToastrService,
     private productService: ProductService
   ) {
     this._unsubscribeAll = new Subject<any>();
@@ -149,12 +142,9 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     if (searchvalue && searchvalue !== "") {
       this.query.filter.filterText = searchvalue.toString().trim();
       this.query.filter.properties = [];
-      this.query.filter.properties.push("filter[$or][ExternalUserName][$like]");
-      this.query.filter.properties.push(
-        "filter[$or][ExternalUserLastName][$like]"
-      );
+
       this.query.filter.properties.push("filter[$or][quantity][$like]");
-      this.query.filter.properties.push("filter[$or][description][$like]");
+      this.query.filter.properties.push("filter[$or][market][$like]");
     } else {
       this.query.filter.filterText = "";
     }
@@ -185,7 +175,6 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     });
     this.formFilters = this.fb.group({
       user: [null, []],
-      ExternalUserName: [null, []],
     });
     this.dateRangeForm = this.fb.group({
       startDate: ["", [Validators.required]],
@@ -298,10 +287,10 @@ export class ProductTableComponent implements OnInit, OnDestroy {
               this.productService.removeProduct(item).toPromise()
             )
           );
-          this.showToastr.success(
-            "Elementos correctamente eliminados",
-            "Éxito"
-          );
+          // this.showToastr.success(
+          //   "Elementos correctamente eliminados",
+          //   "Éxito"
+          // );
           this.refreshData();
         }
       } catch (error) {
