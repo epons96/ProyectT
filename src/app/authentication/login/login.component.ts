@@ -68,29 +68,26 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   login(username: string, password: string) {
-    this.loginV1(username, password);
-  }
-
-  loginV1(username: string, password: string) {
     this.inLoading = true;
     this.authService.login(username, password).subscribe(
-      (data) => {
-        console.log("zlgo algo");
-        if (this.successHandle(data)) {
-          const idTheme =
-            this.loggedInUserService.getLoggedInUser().Agency.themeColor;
-          // this.themeConfigService.selectedTheme = this.arrayOfThemes[
-          //   idTheme - 1
-          // ]
-          //   ? this.arrayOfThemes[idTheme - 1]
-          //   : this.arrayOfThemes[0];
-          // document.getElementById("BodyAppClass").className =
-          //   this.themeConfigService.selectedTheme.className;
-          this.router.navigate(["/admin"]).then();
-        } else {
-          this.authService.setLogout();
-        }
-        this.inLoading = false;
+      (dataR) => {
+        dataR.profile.token = dataR.Authorization;
+        this.loggedInUserService.setLoggedInUser(dataR.profile);
+
+        this.authService.getProfile().subscribe(
+          (resData) => {
+            console.log(resData, "***");
+            if (this.successHandle(resData)) {
+              this.router.navigate(["/admin"]).then();
+            } else {
+              this.authService.setLogout();
+            }
+            this.inLoading = false;
+          },
+          (error) => {
+            this.inLoading = false;
+          }
+        );
       },
       (e) => {
         this.inLoading = false;
@@ -101,6 +98,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   successHandle(data: { user: { token: any }; token: any }): boolean {
+    console.log(data);
     data.user.token = data.token;
     this.loggedInUserService.setLoggedInUser(data.user);
     if (!this.loggedInUserService.isClient()) {
