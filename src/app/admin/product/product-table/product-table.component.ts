@@ -91,7 +91,7 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     this.refreshData();
 
     this.breadcrumbService.clearBreadcrumd();
-    // this.breadcrumbService.setBreadcrumd('CarAgencys', true);
+    this.breadcrumbService.setBreadcrumd("Productos", true);
 
     ///////////////////////////////////////////
 
