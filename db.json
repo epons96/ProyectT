@@ -1,130 +1,135 @@
 {
-    "login": {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
-        "profile": {
-            "id": 164,
-            "username": "admin@admin.com",
-            "image": null,
-            "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
-            "lastLogout": "2022-08-30T17:12:38.000Z",
-            "role": "Admin",
-            "name": "NAme",
-            "lastName": "Lastname",
-            "email": "admin@admin.com",
-            "genre": null,
-            "status": "enabled",
-            "clientType": null
-        }
-    },
-    "adminProfile": {
-        "user": {
-            "id": 1,
-            "name": "NAme",
-            "lastname": "Admin",
-            "image": null,
-            "role": "admin",
-            "username": "admin@admin.com",
-            "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
-            "phone": "55555555",
-            "email": "admin@admin.com",
-            "isActive": true,
-            "canCreateUsers": true,
-            "canEditUsers": true,
-            "canCreateClients": true,
-            "canListUser": true,
-            "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
-        },
-        "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
-    },
-    "users": {
-        "admin": {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQwNTo1MTowNi43NjNaIiwicmFuZG9tIjowLjM0ODA4MDU3NDIwNzI2MX0sImlhdCI6MTY2NDg2MjY2NiwiZXhwIjoxNjY0ODk4NjY2fQ.8B-8t1aKEkl9IMH5fcRBfI8eoO4szE_d_pxwz9YfDmM",
-            "profile": {
-                "id": 164,
-                "username": "admin@admin.com",
-                "role": "Admin",
-                "name": "NAme",
-                "lastName": "Lastname",
-                "email": "admin@admin.com",
-                "genre": null
-            }
-        },
-        "client": {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQwNTo1MTowNi43NjNaIiwicmFuZG9tIjowLjM0ODA4MDU3NDIwNzI2MX0sImlhdCI6MTY2NDg2MjY2NiwiZXhwIjoxNjY0ODk4NjY2fQ.8B-8t1aKEkl9IMH5fcRBfI8eoO4szE_d_pxwz9YfDmM",
-            "profile": {
-                "id": 16,
-                "username": "client@client.com",
-                "role": "Client",
-                "name": "Nombre cliente",
-                "lastName": "Lastname",
-                "email": "client@client.com",
-                "genre": "M"
-            }
-        }
-    },
-    "productos": {
-        "meta": {
-            "pagination": {
-                "count": 7,
-                "total": 7
-            }
-        },
-        "data": [{
-                "name": "Refresco Concentrado de Hierro (330ml)",
-                "shortDescription": "Refresco Concentrado de Hierro (330ml)",
-                "quantity": 23,
-                "rating": 5,
-                "market": "international",
-                "id": 1
-            },
-            {
-                "name": "Refresco Concentrado de Mate (330ml)",
-                "shortDescription": "Refresco Concentrado de Mate (330ml)",
-                "quantity": 42,
-                "rating": 5,
-                "market": "international",
-                "id": 2
-            },
-            {
-                "name": "Refresco Concentrado de Limon (330ml)",
-                "shortDescription": "Refresco Concentrado de Limon (330ml)",
-                "quantity": 65,
-                "rating": 5,
-                "market": "international",
-                "id": 3
-            },
-            {
-                "name": "Refresco Concentrado de Cola (330ml)",
-                "shortDescription": "Refresco Concentrado de Cola (330ml)",
-                "quantity": 10,
-                "rating": 5,
-                "market": "international",
-                "id": 4
-            },
-            {
-                "name": "Refresco Concentrado de Naranja (330ml)",
-                "shortDescription": "Refresco Concentrado de Naranja (330ml)",
-                "quantity": 2,
-                "rating": 5,
-                "market": "international",
-                "id": 5
-            },
-            {
-                "name": "Refresco Concentrado de Uva (330ml)",
-                "shortDescription": "Refresco Concentrado de Uva (330ml)",
-                "quantity": 20,
-                "rating": 5,
-                "market": "international",
-                "id": 6
-            },
-            {
-                "name": "Refresco Concentrado de Piña (330ml)",
-                "shortDescription": "Refresco Concentrado de Piña (330ml)",
-                "quantity": 29,
-                "rating": 5,
-                "market": "international",
-                "id": 7
-            }
-        ]
+  "login": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
+    "profile": {
+      "id": 164,
+      "username": "admin@admin.com",
+      "image": null,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
+      "lastLogout": "2022-08-30T17:12:38.000Z",
+      "role": "Admin",
+      "name": "NAme",
+      "lastName": "Lastname",
+      "email": "admin@admin.com",
+      "genre": null,
+      "status": "enabled",
+      "clientType": null
     }
+  },
+  "adminProfile": {
+    "user": {
+      "id": 1,
+      "name": "NAme",
+      "lastname": "Admin",
+      "image": null,
+      "role": "admin",
+      "username": "admin@admin.com",
+      "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
+      "phone": "55555555",
+      "email": "admin@admin.com",
+      "isActive": true,
+      "canCreateUsers": true,
+      "canEditUsers": true,
+      "canCreateClients": true,
+      "canListUser": true,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
+    },
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
+  },
+  "users": [
+    {
+      "name": "carlosvera",
+      "lastname": "prueba",
+      "phone": "5487996632",
+      "email": "asd@mail.co",
+      "role": "admin",
+      "username": "asd@mail.co",
+      "passwords": {
+        "password": null,
+        "repeat": null
+      },
+      "id": 1
+    },
+    {
+      "name": "pepe",
+      "lastname": "q",
+      "phone": null,
+      "email": "asd@ma.aas",
+      "description": null,
+      "role": "client",
+      "username": "user",
+      "passwords": {
+        "password": "123",
+        "repeat": "123"
+      },
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "productos": {
+    "meta": {
+      "pagination": {
+        "count": 7,
+        "total": 7
+      }
+    },
+    "data": [
+      {
+        "name": "Refresco Concentrado de Hierro (330ml)",
+        "shortDescription": "Refresco Concentrado de Hierro (330ml)",
+        "quantity": 23,
+        "rating": 5,
+        "market": "international",
+        "id": 1
+      },
+      {
+        "name": "Refresco Concentrado de Mate (330ml)",
+        "shortDescription": "Refresco Concentrado de Mate (330ml)",
+        "quantity": 42,
+        "rating": 5,
+        "market": "international",
+        "id": 2
+      },
+      {
+        "name": "Refresco Concentrado de Limon (330ml)",
+        "shortDescription": "Refresco Concentrado de Limon (330ml)",
+        "quantity": 65,
+        "rating": 5,
+        "market": "international",
+        "id": 3
+      },
+      {
+        "name": "Refresco Concentrado de Cola (330ml)",
+        "shortDescription": "Refresco Concentrado de Cola (330ml)",
+        "quantity": 10,
+        "rating": 5,
+        "market": "international",
+        "id": 4
+      },
+      {
+        "name": "Refresco Concentrado de Naranja (330ml)",
+        "shortDescription": "Refresco Concentrado de Naranja (330ml)",
+        "quantity": 2,
+        "rating": 5,
+        "market": "international",
+        "id": 5
+      },
+      {
+        "name": "Refresco Concentrado de Uva (330ml)",
+        "shortDescription": "Refresco Concentrado de Uva (330ml)",
+        "quantity": 20,
+        "rating": 5,
+        "market": "international",
+        "id": 6
+      },
+      {
+        "name": "Refresco Concentrado de Piña (330ml)",
+        "shortDescription": "Refresco Concentrado de Piña (330ml)",
+        "quantity": 29,
+        "rating": 5,
+        "market": "international",
+        "id": 7
+      }
+    ]
+  }
 }
