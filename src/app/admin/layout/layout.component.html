@@ -1,0 +1,68 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer id="sidenavId" (mouseenter)="onMouseEnterSidenav($event)" (mouseleave)="onMouseLeaveSidenav($event)" class="sidenav" [ngClass]="{ compressSidnav: compressSidnavState }" fixedInViewport="true" [attr.role]="isHandset ? 'dialog' : 'navigation'"
+        [mode]="isHandset ? 'over' : 'side'" [opened]="!isHandset">
+
+        <mat-nav-list class="navList" fxLayout="column" fxLayoutAlign="start start">
+            <!-- <a class="w-92" mat-list-item routerLinkActive="active-link" routerLink="/backend/dashboard">
+                <mat-icon class="menu-icon">dashboard</mat-icon>
+                <span class="mat-body-1 ml-3">{{ 'Dashboard'}}</span>
+            </a> -->
+
+            <a *ngIf="this.loggedInUser.role === 'admin'" class="w-92" mat-list-item routerLinkActive="active-link" routerLink="/admin/users">
+                <mat-icon class="menu-icon">shopping_cart</mat-icon>
+                <span class="mat-body-1 ml-3">{{ 'Usuarios' | uppercase }}</span>
+            </a>
+            <a *ngIf="this.loggedInUser.role === 'admin'" class="w-92" mat-list-item routerLinkActive="active-link" routerLink="/admin/products">
+                <mat-icon class="menu-icon">shopping_cart</mat-icon>
+                <span class="mat-body-1 ml-3">{{ 'productos' | uppercase }}</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenavContent" id="sidenavContentId" [ngClass]="{ expandSidnavContent: compressSidnavState, 'no-margin-left': isHandset }">
+        <mat-toolbar color="primary" class="main-toolbar">
+            <mat-toolbar-row>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex.xs="100" fxFlex="78">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="25">
+                        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                            <!-- || !this.sidenav.opened -->
+                            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                        </button>
+                        <h1>{{ breadcrumb }}</h1>
+                        <app-breadcrumd [separator]="separator"></app-breadcrumd>
+                    </div>
+                    <div fxLayout="row" style="padding-right: 16px !important; position: fixed; right: 0" fxLayoutAlign="start center">
+
+                        <button mat-icon-button matTooltip="{{ 'Opciones de usuario' }}">
+                            <mat-icon class="cursor-pointer" aria-label="Side nav toggle icon"
+                                [matMenuTriggerFor]="menu">dehaze
+                            </mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" class="mymegamenu">
+                            <button mat-menu-item (click)="onEditUser()">
+                                <mat-icon>account_box</mat-icon>
+                                {{ 'Mi Perfil' }}
+                            </button>
+                            <button mat-menu-item (click)="logout()">
+                                <mat-icon>exit_to_app</mat-icon>
+                                {{ 'Salir' }}
+                            </button>
+                        </mat-menu>
+
+                        <img class="ImageAvatar" *ngIf="!this.loggedInUser.image" src="{{ '../../../assets/images/users/user.png' }}" alt="user" />
+                        <img class="ImageAvatar" *ngIf="this.loggedInUser.image" src="{{ userUrl + loggedInUser.image }}" alt="user" onerror="this.onerror=null;this.src='../../../assets/images/users/user.png';" />
+
+                        <div fxLayout="column" fxHide.xs style="margin-right: 40px !important" fxLayoutAlign="start start">
+                            <span class="mat-body-1" style="font-size: 13px !important">{{ loggedInUser.name }}</span>
+                            <span class="mat-caption">{{ loggedInUser.email }}</span>
+                        </div>
+                    </div>
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <!--views-->
+        <div class="MainLayoutRoutes" fxFlexFill fxLayout="column" fxLayoutAlign="start stretch">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
