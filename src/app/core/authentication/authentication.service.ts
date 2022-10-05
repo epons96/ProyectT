@@ -11,10 +11,12 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AuthenticationService {
-  userUrl = environment + "auth/login";
-  userLogout = environment + "auth/logout";
-  urlForgot = environment + "auth/forgot";
-  urlChangePass = environment + "auth/change-pass";
+  userUrl = environment.apiUrl + "users";
+  loginUrl = environment.apiUrl + "login";
+  adminProfile = environment.apiUrl + "adminProfile";
+  userLogout = environment.apiUrl + "auth/logout";
+  urlForgot = environment.apiUrl + "auth/forgot";
+  urlChangePass = environment.apiUrl + "auth/change-pass";
 
   userUrlLocal = environment + "auth/login";
   userLogoutLocal = environment + "auth/logout";
@@ -37,25 +39,11 @@ export class AuthenticationService {
       username: user,
       password: password,
     };
-
-    return this.httpClient.get<any>(this.userUrl, httpOptions);
+    return this.httpClient.get<any>(this.loginUrl, httpOptions);
   }
 
   getProfile(): Observable<any> {
-    return this.httpClient.get(this.userUrlLocal);
-  }
-
-  loginByAccount(token: string): any {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        language: "es",
-        Authorization: token,
-      }),
-      Authorization: token,
-    };
-
-    return this.httpClient.get<any>(this.userUrl, httpOptions);
+    return this.httpClient.get(this.adminProfile);
   }
 
   setLogout(): void {
@@ -102,9 +90,5 @@ export class AuthenticationService {
 
   getUser(): any {
     return JSON.parse(localStorage.getItem("u_") || "[]");
-  }
-
-  isLoggedIn(): boolean {
-    return this.getUser() !== null;
   }
 }

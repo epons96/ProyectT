@@ -22,7 +22,7 @@ const routes: Routes = [
       import("../app/authentication/authentication.module").then(
         (m) => m.AuthenticationModule
       ),
-    // canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard],
   },
   {
     path: "**",
