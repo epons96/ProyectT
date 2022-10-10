@@ -27,12 +27,14 @@ export class AuthenticationGuard implements CanActivate {
 
   checkAccess(): boolean {
     const loggedInUser = this.loggedInUserService.getLoggedInUser();
+    console.log(loggedInUser);
 
     if (loggedInUser && loggedInUser.role) {
       if (loggedInUser.role === "admin") {
         this.router.navigate(["admin"]);
       }
       if (loggedInUser.role === "client") {
+        console.log("voy al client");
         this.router.navigate(["client"]);
       }
     } else {

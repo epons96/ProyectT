@@ -13,7 +13,9 @@ import { Router } from "@angular/router";
 export class AuthenticationService {
   userUrl = environment.apiUrl + "users";
   loginUrl = environment.apiUrl + "login";
+  loginUrlC = environment.apiUrl + "loginC";
   adminProfile = environment.apiUrl + "adminProfile";
+  clientProfile = environment.apiUrl + "clientProfile";
   userLogout = environment.apiUrl + "auth/logout";
   urlForgot = environment.apiUrl + "auth/forgot";
   urlChangePass = environment.apiUrl + "auth/change-pass";
@@ -42,8 +44,26 @@ export class AuthenticationService {
     return this.httpClient.get<any>(this.loginUrl, httpOptions);
   }
 
+  // LOGIN FOR CLIENT
+  loginC(user: string, password: string) {
+    const base64EncodedPw = btoa(user + ":" + password);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Basic " + base64EncodedPw,
+      }),
+      username: user,
+      password: password,
+    };
+    return this.httpClient.get<any>(this.loginUrlC, httpOptions);
+  }
+
   getProfile(): Observable<any> {
     return this.httpClient.get(this.adminProfile);
+  }
+
+  getProfileC(): Observable<any> {
+    return this.httpClient.get(this.clientProfile);
   }
 
   setLogout(): void {

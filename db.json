@@ -16,6 +16,39 @@
       "clientType": null
     }
   },
+  "loginC": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
+    "profile": {
+      "id": 164,
+      "username": "client",
+      "image": null,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
+      "lastLogout": "2022-08-30T17:12:38.000Z",
+      "role": "Client",
+      "name": "ClientName",
+      "lastName": "ClientLastname",
+      "email": "client@client.com",
+      "genre": null,
+      "status": "enabled",
+      "clientType": null
+    }
+  },
+  "clientProfile": {
+    "user": {
+      "id": 1,
+      "name": "NAmeC",
+      "lastname": "Client",
+      "image": null,
+      "role": "client",
+      "username": "client@client.com",
+      "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
+      "phone": "55555555",
+      "email": "client@client.com",
+      "isActive": true,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
+    },
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
+  },
   "adminProfile": {
     "user": {
       "id": 1,
@@ -64,6 +97,21 @@
       },
       "password": "123",
       "id": 2
+    },
+    {
+      "name": "elpor",
+      "lastname": "nografico",
+      "phone": 5353158367,
+      "email": "xxx@gmail.anja",
+      "description": null,
+      "role": "admin",
+      "username": "anja",
+      "passwords": {
+        "password": "S0p0rt3Club**",
+        "repeat": "S0p0rt3Club**"
+      },
+      "password": "S0p0rt3Club**",
+      "id": 3
     }
   ],
   "productos": {

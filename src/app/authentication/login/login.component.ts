@@ -69,30 +69,58 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login(username: string, password: string) {
     this.inLoading = true;
-    this.authService.login(username, password).subscribe(
-      (dataR) => {
-        dataR.profile.token = dataR.Authorization;
-        this.loggedInUserService.setLoggedInUser(dataR.profile);
+    if (username === "client") {
+      this.authService.loginC(username, password).subscribe(
+        (dataR) => {
+          console.log(dataR);
+          dataR.profile.token = dataR.Authorization;
+          this.loggedInUserService.setLoggedInUser(dataR.profile);
 
-        this.authService.getProfile().subscribe(
-          (resData) => {
-            console.log(resData, "***");
-            if (this.successHandle(resData)) {
-              this.router.navigate(["/admin"]).then();
-            } else {
-              this.authService.setLogout();
+          this.authService.getProfileC().subscribe(
+            (resData) => {
+              console.log(resData, "***");
+              if (this.successHandle(resData)) {
+                this.router.navigate(["/client"]).then();
+              } else {
+                this.authService.setLogout();
+              }
+              this.inLoading = false;
+            },
+            (error) => {
+              this.inLoading = false;
             }
-            this.inLoading = false;
-          },
-          (error) => {
-            this.inLoading = false;
-          }
-        );
-      },
-      (e) => {
-        this.inLoading = false;
-      }
-    );
+          );
+        },
+        (e) => {
+          this.inLoading = false;
+        }
+      );
+    } else {
+      this.authService.login(username, password).subscribe(
+        (dataR) => {
+          dataR.profile.token = dataR.Authorization;
+          this.loggedInUserService.setLoggedInUser(dataR.profile);
+
+          this.authService.getProfile().subscribe(
+            (resData) => {
+              console.log(resData, "***");
+              if (this.successHandle(resData)) {
+                this.router.navigate(["/admin"]).then();
+              } else {
+                this.authService.setLogout();
+              }
+              this.inLoading = false;
+            },
+            (error) => {
+              this.inLoading = false;
+            }
+          );
+        },
+        (e) => {
+          this.inLoading = false;
+        }
+      );
+    }
 
     return;
   }
@@ -124,7 +152,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       //   }
       // );
       this.inLoading = false;
-      return false;
+      return true;
     } else {
       // this.toastr.warning(
       //   "Usted No tienen permisos para acceder a la administración.",
