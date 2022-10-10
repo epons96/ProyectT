@@ -7,12 +7,12 @@ import {
   Router,
 } from "@angular/router";
 import { Observable } from "rxjs";
-import { LoggedInUserService } from "../core/loggedInUser/logged-in-user.service";
+import { LoggedInUserService } from "src/app/core/loggedInUser/logged-in-user.service";
 
 @Injectable({
   providedIn: "root",
 })
-export class LayoutGuard implements CanActivate {
+export class LayoutAGuard implements CanActivate {
   constructor(
     private loggerInUser: LoggedInUserService,
     private router: Router
@@ -27,7 +27,7 @@ export class LayoutGuard implements CanActivate {
     | UrlTree {
     if (
       this.loggerInUser.getLoggedInUser() &&
-      this.loggerInUser.getLoggedInUser().role === "admin"
+      this.loggerInUser.getLoggedInUser().role == "admin"
     ) {
       return true;
     } else {

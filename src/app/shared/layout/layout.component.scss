@@ -1,0 +1,167 @@
+@import "../../../assets/styles/variable";
+@import "../../../assets/styles/pallete-colors";
+app-layout {
+    .color-white {
+        color: white
+    }
+    .w-92 {
+        width: 92% !important;
+    }
+    .sidenav-container {
+        min-height: 100vh !important;
+    }
+    .mat-drawer-inner-container {
+        overflow: hidden !important;
+    }
+    .sidenav {
+        width: 300px;
+        box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+        border-bottom-right-radius: 16px !important;
+        -webkit-transition: none !important;
+        transition: none !important;
+        border: none !important
+    }
+    .compressSidnav {
+        width: 74px !important;
+        transition: all .5s ease !important;
+        overflow-x: hidden;
+    }
+    .sidenavContent {
+        margin-left: 300px !important;
+        transition: all .5s ease !important;
+    }
+    .no-margin-left {
+        margin-left: 0px !important;
+    }
+    .expandSidnavContent {
+        margin-left: 74px !important;
+        transition: all .5s ease !important;
+    }
+    #compressBtn {
+        position: absolute;
+        top: 6px;
+        left: 250px;
+        mat-icon {
+            font-size: 14px !important;
+            height: 14px !important;
+            width: 14px !important;
+        }
+        #expand {
+            font-size: 24px !important;
+            height: 40px !important;
+            width: 40px !important;
+            margin-top: 8px;
+        }
+    }
+    .mat-drawer-side {
+        border-right: solid 0px rgba(0, 0, 0, 0) !important;
+    }
+    .AgencyTitulo {
+        margin-bottom: 0px !important;
+        margin-left: 10px !important;
+        width: 165px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .user-profile {
+        width: 100%;
+    }
+    .cursor-pointer {
+        cursor: pointer;
+    }
+    .mat-list-item {
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        .menu-icon {
+            color: #FFF;
+            margin-right: 16px;
+        }
+        &:hover {
+            .menu-icon {
+                // transform: rotateY(35deg);
+                // box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+    #expansionHeader {
+        background-color: inherit !important;
+        .menu-icon {
+            color: #FFF;
+            margin-right: 16px;
+        }
+        .mat-expansion-indicator::after {
+            color: #FFF !important;
+        }
+    }
+    // .mat-expansion-indicator {
+    // }
+    #NavBarFooter {
+        position: absolute;
+        bottom: 8px;
+    }
+    .navList {
+        // margin-top: 16px !important;
+        max-height: 90vh !important;
+        overflow: auto;
+        overflow-x: hidden !important;
+        scrollbar-width: thin !important;
+        z-index: 10;
+        padding-bottom: 16px;
+        padding-top: 16px;
+        .mat-body-1 {
+            color: #FFF !important;
+            font-size: 15px !important;
+        }
+        a {
+            border-radius: 8px !important;
+        }
+    }
+    .icon-arrow {
+        margin-left: 45% !important;
+        margin-right: 0px !important;
+    }
+    .MainLayoutRoutes {
+        padding-top: 66px !important;
+        overflow: auto !important;
+        scrollbar-width: thin !important;
+        height: 100vh !important;
+    }
+    .main-toolbar {
+        position: fixed;
+        top: 0px;
+        z-index: 1000;
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+.MenuPanelLayoutThemes+* .mat-menu-panel {
+    min-width: 80px !important;
+    max-width: 125px !important;
+    padding: 2px 8px !important;
+    .mat-menu-item {
+        padding: 8px !important;
+    }
+}
+
+.CustomLayoutTheme+* .mat-menu-panel {
+    min-width: 80px !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    padding: 2px 8px !important;
+    .mat-menu-item {
+        padding: 8px !important;
+    }
+}
+
+.RadioBtnGroupTheme .RadioBtnItemTheme .mat-radio-label-content {
+    width: 100% !important;
+}
+
+.ImageAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}

@@ -6,7 +6,7 @@ import { LoggedInUserService } from "src/app/core/loggedInUser/logged-in-user.se
 import { IUser } from "../../core/interfaces/user.class";
 import { BreadcrumbService } from "./breadcrumd/service/breadcrumb.service";
 import { AuthenticationService } from "../../core/authentication/authentication.service";
-import { DialogUserTableAddEditComponent } from "../user/dialog-user-table-add-edit/dialog-user-table-add-edit.component";
+import { DialogUserTableAddEditComponent } from "src/app/admin/user/dialog-user-table-add-edit/dialog-user-table-add-edit.component";
 
 @Component({
   selector: "app-layout",
@@ -58,6 +58,7 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUser = this.loggedInUserService.getLoggedInUser();
+    this.breadcrumInActionInAction();
   }
 
   onMouseEnterSidenav(event) {
@@ -76,5 +77,15 @@ export class LayoutComponent implements OnInit {
       sidenavId.classList.add("compressSidnav");
       sidenavContentId.classList.add("expandSidnavContent");
     }
+  }
+
+  private breadcrumInActionInAction(): void {
+    this.router.events.subscribe((response: any) => {
+      if (response?.snapshot?.data?.breadcrumb) {
+        this.breadcrumb = response?.snapshot?.data?.breadcrumb;
+        this.breadcrumbService.clearBreadcrumd();
+        this.breadcrumbService.setBreadcrumd(this.breadcrumb, true);
+      }
+    });
   }
 }
