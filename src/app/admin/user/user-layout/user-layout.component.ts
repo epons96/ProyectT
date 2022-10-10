@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { IUser } from "src/app/core/interfaces/user.class";
 import { LoggedInUserService } from "src/app/core/loggedInUser/logged-in-user.service";
 import { UserService } from "src/app/core/user/user.service";
-import { BreadcrumbService } from "../../layout/breadcrumd/service/breadcrumb.service";
+import { BreadcrumbService } from "src/app/shared/layout/breadcrumd/service/breadcrumb.service";
 
 @Component({
   selector: "app-user-layout",

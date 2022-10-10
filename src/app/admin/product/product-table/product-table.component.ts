@@ -10,13 +10,13 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { LoggedInUserService } from "src/app/core/loggedInUser/logged-in-user.service";
 import { UtilsService } from "src/app/core/utils/utils.service";
-import { BreadcrumbService } from "../../layout/breadcrumd/service/breadcrumb.service";
 import { ConfirmationDialogComponent } from "../../confirmation-dialog/confirmation-dialog.component";
 import { IPagination } from "src/app/core/interfaces/pagination.class";
 import { ProductService } from "src/app/core/product/product.service";
 // import { ToastrService } from "ngx-toastr";
 import { DialogShowProductComponent } from "../dialog-show-product/dialog-show-product.component";
 import { DialogAddEditProductComponent } from "../dialog-add-edit-product/dialog-add-edit-product.component";
+import { BreadcrumbService } from "src/app/shared/layout/breadcrumd/service/breadcrumb.service";
 
 @Component({
   selector: "app-product",

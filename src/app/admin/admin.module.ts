@@ -1,7 +1,5 @@
-import { BreadcrumbModule } from "./layout/breadcrumd/breadcrumb.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { LayoutComponent } from "./layout/layout.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { AdminRoutingModule } from "./admin-routing.module";
@@ -20,9 +18,11 @@ import { RouterModule } from "@angular/router";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { LayoutModule } from "../shared/layout/layout.module";
+import { BreadcrumbModule } from "../shared/layout/breadcrumd/breadcrumb.module";
 
 @NgModule({
-  declarations: [LayoutComponent],
+  // declarations: [LayoutComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -35,7 +35,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatListModule,
     MatMenuModule,
     MatTooltipModule,
-    BreadcrumbModule,
+    // BreadcrumbModule,
+    LayoutModule,
     UserModule,
     FlexLayoutModule,
     ReactiveFormsModule,
@@ -45,6 +46,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatListModule,
     MatDatepickerModule,
     MatRadioModule,
+    BreadcrumbModule,
   ],
 })
 export class AdminModule {}
