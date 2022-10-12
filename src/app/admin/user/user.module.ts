@@ -39,7 +39,7 @@ import { MatCardModule } from "@angular/material/card";
 // import { UsersMyAgenciesTableComponent } from "./users-my-agencies-table/users-my-agencies-table.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { MatSortModule } from "@angular/material/sort";
-import { ConfirmationDialogModule } from "../confirmation-dialog/confirmation-dialog.module";
+import { ConfirmationDialogModule } from "../../shared/confirmation-dialog/confirmation-dialog.module";
 import { DialogClientAddEditModule } from "../dialog-client-add-edit/dialog-client-add-edit.module";
 import { DialogUserTableAddEditModule } from "../user/dialog-user-table-add-edit/dialog-user-table-add-edit.module";
 import { UserLayoutComponent } from "./user-layout/user-layout.component";

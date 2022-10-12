@@ -22,7 +22,7 @@ import { debounceTime } from "rxjs/operators";
 import { IUser } from "src/app/core/interfaces/user.class";
 import { LoggedInUserService } from "../../../core/loggedInUser/logged-in-user.service";
 import { UserService } from "src/app/core/user/user.service";
-import { ConfirmationDialogComponent } from "../../confirmation-dialog/confirmation-dialog.component";
+import { ConfirmationDialogComponent } from "../../../shared/confirmation-dialog/confirmation-dialog.component";
 import { BreadcrumbService } from "src/app/shared/layout/breadcrumd/service/breadcrumb.service";
 
 @Component({

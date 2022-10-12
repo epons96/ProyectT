@@ -1,4 +1,4 @@
-import { ConfirmationDialogModule } from "./../confirmation-dialog/confirmation-dialog.module";
+import { ConfirmationDialogModule } from "../../shared/confirmation-dialog/confirmation-dialog.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
