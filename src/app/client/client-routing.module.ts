@@ -8,9 +8,14 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: "carto",
+        path: "cart",
         loadChildren: () =>
           import("./cart/cart.module").then((m) => m.CartModule),
+      },
+      {
+        path: "products",
+        loadChildren: () =>
+          import("./products/products.module").then((m) => m.ProductsModule),
       },
     ],
   },

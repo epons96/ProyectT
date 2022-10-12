@@ -1,32 +1,31 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { RouterModule } from "@angular/router";
-import { LayoutModule } from "../shared/layout/layout.module";
-import { BreadcrumbModule } from "../shared/layout/breadcrumd/breadcrumb.module";
-import { ReactiveFormsModule } from "@angular/forms";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatIconModule } from "@angular/material/icon";
+import { ClientRoutingModule } from "./client-routing.module";
 import { MatButtonModule } from "@angular/material/button";
 import { MatNativeDateModule } from "@angular/material/core";
-import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatExpansionModule } from "@angular/material/expansion";
-import { MatIconModule } from "@angular/material/icon";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatMenuModule } from "@angular/material/menu";
-import { MatRadioModule } from "@angular/material/radio";
-import { MatSelectModule } from "@angular/material/select";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { AdminRoutingModule } from "../admin/admin-routing.module";
-import { UserModule } from "../admin/user/user.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatSelectModule } from "@angular/material/select";
+import { RouterModule } from "@angular/router";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { LayoutModule } from "../shared/layout/layout.module";
+import { BreadcrumbModule } from "../shared/layout/breadcrumd/breadcrumb.module";
 import { CartModule } from "./cart/cart.module";
 
 @NgModule({
-  // declarations: [],
+  // declarations: [LayoutComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule,
+    ClientRoutingModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
@@ -37,7 +36,6 @@ import { CartModule } from "./cart/cart.module";
     MatMenuModule,
     MatTooltipModule,
     LayoutModule,
-    UserModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     MatSelectModule,
@@ -47,6 +45,7 @@ import { CartModule } from "./cart/cart.module";
     MatDatepickerModule,
     MatRadioModule,
     BreadcrumbModule,
+    CartModule,
   ],
 })
 export class ClientModule {}
