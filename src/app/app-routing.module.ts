@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: "client",
     loadChildren: () =>
-      import("../app/client/client.module").then((m) => m.ClientModule),
+      import("./client/client.module").then((m) => m.ClientModule),
     canActivate: [LayoutCGuard],
   },
   {
