@@ -1,1 +1,24 @@
-<p>product works!</p>
+<div fxlayout="column" fxlayoutalign="start stretch" fxlayout.lt-md="row" fxlayoutalign.lt-md="start start" class="card-product" style="position: relative; flex-direction: column; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch; max-width: 100%;"
+    id="ProductCardId">
+    <div fxflex.lt-md="35" fxlayoutalign="center center" class="image-layout" style="place-content: center; align-items: center; flex-direction: row; box-sizing: border-box; display: flex;">
+        <a fxflex="row" fxlayoutalign="center center" class="product-link" href="/product?productId=&amp;stockId=" style="place-content: center; align-items: center; flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 100%;"><img lazyimg="" onerror="this.onerror=null;this.src='../../../../assets/images/noImage.jpg';" class="image ">
+
+        </a>
+    </div>
+    <div fxlayout="column" ngclass.gt-sm="p-3" ngclass.lt-md="p-2 w-100" class="product-info-wrapper p-3" style="flex-direction: column; box-sizing: border-box; display: flex;">
+        <span class="category"> Categoria </span>
+        <div class="title"><a class="link-nav-a" href="/product?productId=&amp;stockId=">Producto nombre</a></div>
+        <div fxlayout="row" fxlayoutalign="space-between start" class="price mt-2" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: flex-start space-between; align-items: flex-start;">
+            <button mat-mini-fab="" class="mat-focus-indicator mat-tooltip-trigger btnAddCart mat-mini-fab mat-button-base mat-accent" style="z-index: 10;"><span class="mat-button-wrapper">
+                    <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
+                        aria-hidden="true" data-mat-icon-type="font">shopping_cart</mat-icon>
+                </span><span matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
+                    class="mat-button-focus-overlay"></span></button>
+            <div>
+                <div class="">
+                    <p class="mat-body-2 m-0 price-offer">Precio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
