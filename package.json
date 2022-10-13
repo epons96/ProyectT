@@ -6,12 +6,12 @@
         "start": "ng serve",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
-        "trans-es": "ngx-translate-extract -i ./src -o ./src/assets/i18n/es.json -k -f json -s -c",
-        "trans-en": "ngx-translate-extract -i ./src -o ./src/assets/i18n/en.json -k -f json -s -c",
-        "test": "ng test"
+        "test": "ng test",
+        "server": "ts-node src/server/server.ts"
     },
     "private": true,
     "dependencies": {
+        "@angular-devkit/build-angular": "^13.3.9",
         "@angular/animations": "~13.3.0",
         "@angular/cdk": "^13.3.9",
         "@angular/common": "~13.3.0",
@@ -25,18 +25,18 @@
         "@angular/router": "~13.3.0",
         "@ngx-translate/core": "^14.0.0",
         "@ngx-translate/http-loader": "^7.0.0",
+        "json-server": "^0.17.0",
         "libphonenumber-js": "^1.10.13",
-        "moment": "2.29.3",
+        "moment": "^2.29.4",
         "ngp-image-picker": "^2.3.3",
-        "ngx-cookie-service": "^14.0.0",
         "ngx-toastr": "14.3.0",
         "rxjs": "~7.5.0",
         "swiper": "^8.3.2",
+        "ts-node": "5.0.1",
         "tslib": "^2.3.0",
         "zone.js": "~0.11.4"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "13.3.5",
         "@angular/cli": "~13.3.5",
         "@angular/compiler-cli": "~13.3.0",
         "@types/jasmine": "~3.10.0",

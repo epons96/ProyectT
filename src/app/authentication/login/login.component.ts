@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             (resData) => {
               console.log(resData, "***");
               if (this.successHandle(resData)) {
-                this.router.navigate(["/client"]).then();
+                this.router.navigate(["/client/products"]).then();
               } else {
                 this.authService.setLogout();
               }
