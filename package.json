@@ -12,7 +12,7 @@
     "private": true,
     "dependencies": {
         "@angular-devkit/build-angular": "^13.3.9",
-        "@angular/animations": "~13.3.0",
+        "@angular/animations": "^14.2.6",
         "@angular/cdk": "^13.3.9",
         "@angular/common": "~13.3.0",
         "@angular/compiler": "~13.3.0",
@@ -29,7 +29,7 @@
         "libphonenumber-js": "^1.10.13",
         "moment": "^2.29.4",
         "ngp-image-picker": "^2.3.3",
-        "ngx-toastr": "14.3.0",
+        "ngx-toastr": "^15.2.1",
         "rxjs": "~7.5.0",
         "swiper": "^8.3.2",
         "ts-node": "5.0.1",
