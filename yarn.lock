@@ -141,10 +141,10 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular/animations@^14.2.6":
-  version "14.2.6"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-14.2.6.tgz#41e16a4a6c178f5423c05331416a6b97d1069549"
-  integrity sha512-Tmb3Jj016j8m8OOGSk/ReL0b+OuUCMj0KQansk3C4pCpH9oPF67Vnm0fmVC2wYjjsSS/iDgl4kaDW740wfPGNQ==
+"@angular/animations@13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-13.3.0.tgz#aaa954dd7c359fad8a1313e6abe311f8733732b3"
+  integrity sha512-q7hkImhHCv0QdriR8HOFhsAW05QDmvapcHrBv3y862LUTR5e90/+81RYuwFuKX1lk/sa7LiHlHHWC7oCspzr2Q==
   dependencies:
     tslib "^2.3.0"
 
@@ -4880,10 +4880,10 @@ ngp-image-picker@^2.3.3:
   dependencies:
     tslib "^2.0.0"
 
-ngx-toastr@^15.2.1:
-  version "15.2.1"
-  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-15.2.1.tgz#011100db480c48107a9424296f267cbe26ac7b1e"
-  integrity sha512-Fyik8+sTbmX4NftVWWd3SIaeH8qlRU0emAfpey/AXsXuUEXgOOXKKnVPLmMAK7XL7xLy0c/+UsYBwlPK4TJcmA==
+ngx-toastr@14.3.0:
+  version "14.3.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-14.3.0.tgz#3c366fc5ef8aa1ca8f97ae46c468cfcdf44e620d"
+  integrity sha512-d8j/sOr60w5U7rGlcKQ0Ff4u+m2NzhqU5ZdJXn7QW3aR3Zf/rY7/Fd14BmUindTOWVr2NeTYcQXCjLpir0ldpA==
   dependencies:
     tslib "^2.3.0"
 
