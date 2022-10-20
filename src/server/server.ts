@@ -1,8 +1,8 @@
 const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router = jsonServer.router("../../db.json");
+const router = jsonServer.router("./db.json");
 const middlewares = jsonServer.defaults();
-const db = require("../../db.json");
+const db = require("./db.json");
 const fs = require("fs");
 
 server.use(middlewares);
@@ -70,7 +70,7 @@ function checkIfAdmin(user, bypassToken = false) {
 // }
 
 function readUsers() {
-  const dbRaw = fs.readFileSync("../../db.json");
+  const dbRaw = fs.readFileSync("./db.json");
   const users = JSON.parse(dbRaw).users;
   return users;
 }

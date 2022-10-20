@@ -1,182 +1,149 @@
 {
-    "loginA": {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
-        "profile": {
-            "id": 164,
-            "username": "admin@admin.com",
-            "image": null,
-            "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
-            "lastLogout": "2022-08-30T17:12:38.000Z",
-            "role": "Admin",
-            "name": "NAme",
-            "lastName": "Lastname",
-            "email": "admin@admin.com",
-            "genre": null,
-            "status": "enabled",
-            "clientType": null
-        }
+  "loginA": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
+    "profile": {
+      "id": 164,
+      "username": "admin@admin.com",
+      "image": null,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
+      "lastLogout": "2022-08-30T17:12:38.000Z",
+      "role": "Admin",
+      "name": "NAme",
+      "lastName": "Lastname",
+      "email": "admin@admin.com",
+      "genre": null,
+      "status": "enabled",
+      "clientType": null
+    }
+  },
+  "loginC": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
+    "profile": {
+      "id": 164,
+      "username": "client",
+      "image": null,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
+      "lastLogout": "2022-08-30T17:12:38.000Z",
+      "role": "Client",
+      "name": "ClientName",
+      "lastName": "ClientLastname",
+      "email": "client@client.com",
+      "genre": null,
+      "status": "enabled",
+      "clientType": null
+    }
+  },
+  "clientProfile": {
+    "user": {
+      "id": 1,
+      "name": "NAmeC",
+      "lastname": "Client",
+      "image": null,
+      "role": "client",
+      "username": "client@client.com",
+      "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
+      "phone": "55555555",
+      "email": "client@client.com",
+      "isActive": true,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
     },
-    "loginC": {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InV1aWQiOiIzODNmN2Y4Zi03ZDAxLTQxYTItOTYzNi0yNzAxM2Q0ZTY1ZGQiLCJsYXN0TG9nb3V0IjoiMjAyMi0wOC0zMFQxNzoxMjozOC4wMDBaIiwidXNlcm5hbWUiOiJ2ZW50YXM1QGRhaXF1aXJpY3ViYS5jb20iLCJkYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS41MDVaIiwicmFuZG9tIjowLjc2Mzc1NjYwNzc4OTY3ODl9LCJpYXQiOjE2NjQ5MDYzMTEsImV4cCI6MTY2NDk0MjMxMX0.PRJmmDHwMROiG8RpZRsir6r17Sjq_ke3rWylrjgX0MI",
-        "profile": {
-            "id": 164,
-            "username": "client",
-            "image": null,
-            "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd",
-            "lastLogout": "2022-08-30T17:12:38.000Z",
-            "role": "Client",
-            "name": "ClientName",
-            "lastName": "ClientLastname",
-            "email": "client@client.com",
-            "genre": null,
-            "status": "enabled",
-            "clientType": null
-        }
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
+  },
+  "adminProfile": {
+    "user": {
+      "id": 1,
+      "name": "NAme",
+      "lastname": "Admin",
+      "image": null,
+      "role": "admin",
+      "username": "admin@admin.com",
+      "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
+      "phone": "55555555",
+      "email": "admin@admin.com",
+      "isActive": true,
+      "canCreateUsers": true,
+      "canEditUsers": true,
+      "canCreateClients": true,
+      "canListUser": true,
+      "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
     },
-    "clientProfile": {
-        "user": {
-            "id": 1,
-            "name": "NAmeC",
-            "lastname": "Client",
-            "image": null,
-            "role": "client",
-            "username": "client@client.com",
-            "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
-            "phone": "55555555",
-            "email": "client@client.com",
-            "isActive": true,
-            "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
-        },
-        "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
+  },
+  "users": [
+    {
+      "name": "Nombre",
+      "lastname": "Apellido",
+      "phone": 55555555,
+      "email": "asd@mail.co",
+      "description": null,
+      "role": "admin",
+      "username": "admin",
+      "password": "admin",
+      "id": 3
     },
-    "adminProfile": {
-        "user": {
-            "id": 1,
-            "name": "NAme",
-            "lastname": "Admin",
-            "image": null,
-            "role": "admin",
-            "username": "admin@admin.com",
-            "password": "7iwkmUSl/6O2GucM8Os/3a7XnMZtSAV5xALBFrDQvxxJKHdnk9V9yAa91l5IL5LXIaml5zrvoAJjYNXknXuTIw==",
-            "phone": "55555555",
-            "email": "admin@admin.com",
-            "isActive": true,
-            "canCreateUsers": true,
-            "canEditUsers": true,
-            "canCreateClients": true,
-            "canListUser": true,
-            "uuid": "383f7f8f-7d01-41a2-9636-27013d4e65dd"
-        },
-        "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
+    {
+      "username": "test2",
+      "password": "123",
+      "id": 4,
+      "role": "admin",
+      "name": "jorge",
+      "lastname": "asd",
+      "phone": 54134878,
+      "email": "asd@mail.co",
+      "description": null
     },
-    "users": [{
-            "name": "Nombre",
-            "lastname": "Apellido",
-            "phone": 55555555,
-            "email": "asd@mail.co",
-            "description": null,
-            "role": "admin",
-            "username": "admin",
-            "password": "admin",
-            "id": 3
-        },
-        {
-            "username": "test2",
-            "password": "123",
-            "id": 4,
-            "role": "admin",
-            "name": "jorge",
-            "lastname": "asd",
-            "phone": 54134878,
-            "email": "asd@mail.co",
-            "description": null
-        },
-        {
-            "name": "client",
-            "lastName": "client",
-            "email": "client@client.as",
-            "passwords": {
-                "password": "123",
-                "repeat": "123"
-            },
-            "username": "client",
-            "password": "123",
-            "role": "client"
-        }
-    ],
-    "productos": {
-        "meta": {
-            "pagination": {
-                "count": 7,
-                "total": 7
-            }
-        },
-        "data": [{
-                "name": "Refresco Concentrado de Hierro (330ml)",
-                "shortDescription": "Refresco Concentrado de Hierro (330ml)",
-                "quantity": 23,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 1
-            },
-            {
-                "name": "Refresco Concentrado de Mate (330ml)",
-                "shortDescription": "Refresco Concentrado de Mate (330ml)",
-                "quantity": 42,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 2
-            },
-            {
-                "name": "Refresco Concentrado de Limon (330ml)",
-                "shortDescription": "Refresco Concentrado de Limon (330ml)",
-                "quantity": 65,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 3
-            },
-            {
-                "name": "Refresco Concentrado de Cola (330ml)",
-                "shortDescription": "Refresco Concentrado de Cola (330ml)",
-                "quantity": 10,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 4
-            },
-            {
-                "name": "Refresco Concentrado de Naranja (330ml)",
-                "shortDescription": "Refresco Concentrado de Naranja (330ml)",
-                "quantity": 2,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 5
-            },
-            {
-                "name": "Refresco Concentrado de Uva (330ml)",
-                "shortDescription": "Refresco Concentrado de Uva (330ml)",
-                "quantity": 20,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 6
-            },
-            {
-                "name": "Refresco Concentrado de Piña (330ml)",
-                "shortDescription": "Refresco Concentrado de Piña (330ml)",
-                "quantity": 29,
-                "rating": 5,
-                "price": 48,
-                "market": "international",
-                "id": 7
-            }
-        ]
+    {
+      "name": "client",
+      "lastName": "client",
+      "email": "client@client.as",
+      "passwords": {
+        "password": "123",
+        "repeat": "123"
+      },
+      "username": "client",
+      "password": "123",
+      "role": "client"
     },
-    "cart": [{
+    {
+      "name": "nombre",
+      "lastName": "pueba",
+      "email": "admin@correo.bo",
+      "passwords": {
+        "password": "123",
+        "repeat": "123"
+      },
+      "username": "admin@correo.bo",
+      "password": "123",
+      "role": "client"
+    }
+  ],
+  "productos": {
+    "meta": {
+      "pagination": {
+        "count": 7,
+        "total": 7
+      }
+    },
+    "data": [
+      {
+        "name": "Refresco Concentrado de Hierro (330ml)",
+        "shortDescription": "Refresco Concentrado de Hierro (330ml)",
+        "quantity": 23,
+        "rating": 5,
+        "price": 48,
+        "market": "international",
+        "id": 1
+      },
+      {
+        "name": "Refresco Concentrado de Mate (330ml)",
+        "shortDescription": "Refresco Concentrado de Mate (330ml)",
+        "quantity": 42,
+        "rating": 5,
+        "price": 48,
+        "market": "international",
+        "id": 2
+      },
+      {
         "name": "Refresco Concentrado de Limon (330ml)",
         "shortDescription": "Refresco Concentrado de Limon (330ml)",
         "quantity": 65,
@@ -184,33 +151,88 @@
         "price": 48,
         "market": "international",
         "id": 3
-    }],
-    "carts": [{
-        "id": 12509,
-        "PersonId": 2,
-        "totalPrice": 28.5,
-        "market": "international",
-        "CartItems": [{
-            "id": 19871,
-            "CartId": 12509,
-            "ProductId": "9da51ca0-322c-4157-9c27-e6956e94739f",
-            "quantity": 1,
-            "Product": {
-                "name": "Media Pierna de Cerdo (4kg)",
-                "id": "9da51ca0-322c-4157-9c27-e6956e94739f",
-                "CategoryId": 100,
-                "market": "international"
-            }
-        }]
-    }],
-    "payments": [{
-        "name": "Refresco Concentrado de Limon (330ml)",
-        "shortDescription": "Refresco Concentrado de Limon (330ml)",
-        "quantity": 65,
+      },
+      {
+        "name": "Refresco Concentrado de Cola (330ml)",
+        "shortDescription": "Refresco Concentrado de Cola (330ml)",
+        "quantity": 10,
         "rating": 5,
         "price": 48,
         "market": "international",
-        "id": 3,
-        "UserId": 1
-    }]
+        "id": 4
+      },
+      {
+        "name": "Refresco Concentrado de Naranja (330ml)",
+        "shortDescription": "Refresco Concentrado de Naranja (330ml)",
+        "quantity": 2,
+        "rating": 5,
+        "price": 48,
+        "market": "international",
+        "id": 5
+      },
+      {
+        "name": "Refresco Concentrado de Uva (330ml)",
+        "shortDescription": "Refresco Concentrado de Uva (330ml)",
+        "quantity": 20,
+        "rating": 5,
+        "price": 48,
+        "market": "international",
+        "id": 6
+      },
+      {
+        "name": "Refresco Concentrado de Piña (330ml)",
+        "shortDescription": "Refresco Concentrado de Piña (330ml)",
+        "quantity": 29,
+        "rating": 5,
+        "price": 48,
+        "market": "international",
+        "id": 7
+      }
+    ]
+  },
+  "cart": [
+    {
+      "name": "Refresco Concentrado de Limon (330ml)",
+      "shortDescription": "Refresco Concentrado de Limon (330ml)",
+      "quantity": 65,
+      "rating": 5,
+      "price": 48,
+      "market": "international",
+      "id": 3
+    }
+  ],
+  "carts": [
+    {
+      "id": 12509,
+      "PersonId": 2,
+      "totalPrice": 28.5,
+      "market": "international",
+      "CartItems": [
+        {
+          "id": 19871,
+          "CartId": 12509,
+          "ProductId": "9da51ca0-322c-4157-9c27-e6956e94739f",
+          "quantity": 1,
+          "Product": {
+            "name": "Media Pierna de Cerdo (4kg)",
+            "id": "9da51ca0-322c-4157-9c27-e6956e94739f",
+            "CategoryId": 100,
+            "market": "international"
+          }
+        }
+      ]
+    }
+  ],
+  "payments": [
+    {
+      "name": "Refresco Concentrado de Limon (330ml)",
+      "shortDescription": "Refresco Concentrado de Limon (330ml)",
+      "quantity": 65,
+      "rating": 5,
+      "price": 48,
+      "market": "international",
+      "id": 3,
+      "UserId": 1
+    }
+  ]
 }
