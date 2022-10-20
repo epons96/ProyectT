@@ -21,6 +21,17 @@ export class UtilsService {
     }
   }
 
+  public keyPressOnlyLetters(event: any): boolean {
+    const inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
   keyPressAlphaSpaceNumbers(event) {
     const inp = String.fromCharCode(event.keyCode);
     const charCode = event.which ? event.which : event.keyCode;

@@ -11,6 +11,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
+import { BasicSnackbarModule } from "../../shared/basic-snackbar/basic-snackbar.module";
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
+    BasicSnackbarModule,
   ],
   declarations: [LoginComponent],
 })

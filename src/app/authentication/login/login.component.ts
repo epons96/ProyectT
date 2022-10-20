@@ -7,11 +7,12 @@ import {
   ViewChild,
 } from "@angular/core";
 import { AuthenticationService } from "../../core/authentication/authentication.service";
-import { ToastrService } from "ngx-toastr";
+// import { ToastrService } from "ngx-toastr";
 import { LoggedInUserService } from "../../core/loggedInUser/logged-in-user.service";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { environment } from "../../../environments/environment";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-login",
@@ -37,10 +38,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     // private showToastrService: ShowToastrService,
     private router: Router,
     private fb: FormBuilder,
-    private loggedInUserService: LoggedInUserService
+    private loggedInUserService: LoggedInUserService,
+    private _snackBar: MatSnackBar
   ) {
     this.message = "";
-    console.log("se ejecuto esta talla");
   }
 
   @HostListener("keypress", ["$event"]) onKeyPress(event: { code: string }) {
@@ -69,114 +70,40 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login(username: string, password: string) {
     this.inLoading = true;
-    if (username === "client") {
-      this.authService.loginC(username, password).subscribe(
-        (dataR) => {
-          console.log(dataR);
-          dataR.profile.token = dataR.Authorization;
-          this.loggedInUserService.setLoggedInUser(dataR.profile);
-
-          this.authService.getProfileC().subscribe(
-            (resData) => {
-              console.log(resData, "***");
-              if (this.successHandle(resData)) {
-                this.router.navigate(["/client/products"]).then();
-              } else {
-                this.authService.setLogout();
-              }
-              this.inLoading = false;
-            },
-            (error) => {
-              this.inLoading = false;
-            }
-          );
-        },
-        (e) => {
-          this.inLoading = false;
+    this.authService.login(username, password).subscribe(
+      (res) => {
+        console.log(res);
+        this.loggedInUserService.setLoggedInUser(res);
+        if (this.loggedInUserService.isAdmin()) {
+          console.log("es admin");
+          this._snackBar.open("Bienvenido", "", {
+            duration: 2000,
+            panelClass: "success-snackbar",
+          });
+          this.router.navigate(["/admin"]).then();
+        } else if (this.loggedInUserService.isClient()) {
+          this._snackBar.open("Bienvenido a la tienda ABC", "", {
+            duration: 2000,
+            panelClass: "success-snackbar",
+          });
+          this.router.navigate(["/client/products"]).then();
+        } else {
+          this._snackBar.open("CREDENCIALES INCORRECTAS", "", {
+            duration: 2000,
+            panelClass: "error-snackbar",
+          });
+          this.authService.setLogout();
         }
-      );
-    } else {
-      this.authService.login(username, password).subscribe(
-        (dataR) => {
-          dataR.profile.token = dataR.Authorization;
-          this.loggedInUserService.setLoggedInUser(dataR.profile);
-
-          this.authService.getProfile().subscribe(
-            (resData) => {
-              console.log(resData, "***");
-              if (this.successHandle(resData)) {
-                this.router.navigate(["/admin"]).then();
-              } else {
-                this.authService.setLogout();
-              }
-              this.inLoading = false;
-            },
-            (error) => {
-              this.inLoading = false;
-            }
-          );
-        },
-        (e) => {
-          this.inLoading = false;
-        }
-      );
-    }
-
+        this.inLoading = false;
+      },
+      (error) => {
+        this._snackBar.open("CREDENCIALES INCORRECTAS", "", {
+          duration: 2000,
+          panelClass: "error-snackbar",
+        });
+        this.inLoading = false;
+      }
+    );
     return;
-  }
-
-  successHandle(data: { user: { token: any }; token: any }): boolean {
-    console.log(data);
-    data.user.token = data.token;
-    this.loggedInUserService.setLoggedInUser(data.user);
-    if (!this.loggedInUserService.isClient()) {
-      // this.toastr.success(
-      //   "Usted está logeado en nuestro sistema.",
-      //   "Felicidades!",
-      //   {
-      //     timeOut: 4000,
-      //     progressBar: true,
-      //     positionClass: "toast-bottom-right",
-      //   }
-      // );
-      this.inLoading = false;
-      return true;
-    } else if (this.loggedInUserService.isClient()) {
-      // this.toastr.warning(
-      //   "Los Cliente No tienen permisos para acceder a la administración.",
-      //   "Atención!",
-      //   {
-      //     timeOut: 6000,
-      //     progressBar: true,
-      //     positionClass: "toast-bottom-right",
-      //   }
-      // );
-      this.inLoading = false;
-      return true;
-    } else {
-      // this.toastr.warning(
-      //   "Usted No tienen permisos para acceder a la administración.",
-      //   "Atención!",
-      //   {
-      //     timeOut: 6000,
-      //     progressBar: true,
-      //     positionClass: "toast-bottom-right",
-      //   }
-      // );
-      this.inLoading = false;
-      return false;
-    }
-  }
-
-  errorHandle(error: { error: { message: any } }) {
-    const message = error.error.message
-      ? error.error.message
-      : "Ha ocurrido un error.";
-    // this.toastr.error(message, "Error", {
-    //   timeOut: 5000,
-    //   progressBar: true,
-    //   positionClass: "toast-bottom-right",
-    // });
-    this.inLoading = false;
   }
 }
