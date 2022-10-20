@@ -20,6 +20,7 @@ export class AuthenticationService {
   urlForgot = environment.apiUrl + "auth/forgot";
   urlChangePass = environment.apiUrl + "auth/change-pass";
 
+  urlUserSignUp = environment.apiUrl + "register";
   userUrlLocal = environment + "auth/login";
   userLogoutLocal = environment + "auth/logout";
   urlForgotLocal = environment + "auth/forgot";
@@ -33,15 +34,19 @@ export class AuthenticationService {
 
   login(user: string, password: string) {
     const base64EncodedPw = btoa(user + ":" + password);
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        Authorization: "Basic " + base64EncodedPw,
-      }),
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Content-Type": "application/json",
+    //     Authorization: "Basic " + base64EncodedPw,
+    //   }),
+    //   username: user,
+    //   password: password,
+    // };
+    const authenticate = {
       username: user,
       password: password,
     };
-    return this.httpClient.get<any>(this.loginUrl, httpOptions);
+    return this.httpClient.post<any>(this.loginUrl, authenticate);
   }
 
   // LOGIN FOR CLIENT
@@ -110,5 +115,15 @@ export class AuthenticationService {
 
   getUser(): any {
     return JSON.parse(localStorage.getItem("u_") || "[]");
+  }
+
+  public signUp(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        language: "es",
+      }),
+    };
+    return this.httpClient.post<any>(this.urlUserSignUp, data, httpOptions);
   }
 }

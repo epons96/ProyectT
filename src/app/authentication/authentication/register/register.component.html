@@ -1,0 +1,141 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center stretch" class="login-background">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="login-card mat-elevation-z8">
+            <div fxLayout="column" fxFlexAlign="center center" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start stretch" class="login-header">
+                    <mat-toolbar color="primary" id="toolbarHeader">
+                        <mat-progress-bar *ngIf="this.inLoading" id="progressBar" color="accent" [mode]="'indeterminate'" [value]="valueSpiner" [bufferValue]="bufferValue">
+                        </mat-progress-bar>
+                        <mat-toolbar-row>
+                        </mat-toolbar-row>
+
+                        <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                            <div class="" id="ImgLayout">
+                            </div>
+                        </mat-toolbar-row>
+                        <mat-toolbar-row>
+
+                        </mat-toolbar-row>
+                    </mat-toolbar>
+
+                </div>
+
+                <form name="login" class="login-form" [style]="'margin-top: -16px; border-radius: 16px !important; background-color: white; border-radius: 16px'">
+
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">
+                            <p class="mt-3 mb-0" [style]="'font-weight: 600; font-size: 1.8em;'">{{emailTxt}}</p>
+                            <p class="mat-body-1 my-0">{{'Tienda'}}</p>
+                            <!--              <div class="mt-1" id="lineUnder"></div>-->
+                        </div>
+                    </div>
+
+                    <!-- <div fxLayout="column" class="p-4" fxLayoutAlign="center center" style="font-size: 0.8em">
+                        <mat-form-field class="example-full-width mb-3" appearance="outline">
+                            <mat-label>{{'Email'}}</mat-label>
+                            <input matInput placeholder="example@domain.com" [disabled]="inLoading" [formControl]="emailForm.controls['email']" name="email" [autofocus]="true" />
+                            <mat-error *ngIf="this.emailForm.controls['email'].hasError('required')">
+                                {{'El email es'}} <strong>{{'requerido'}}</strong></mat-error>
+                            <mat-error *ngIf="this.emailForm.controls['email'].invalid && !this.emailForm.controls['email'].hasError('required')">
+                                {{'El email es'}}&nbsp;
+                                <strong>{{'inválido'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button ngClass.gt-sm="px-4" ngClass.lt-md="px-3" style="width: 180px" mat-raised-button color="primary" [disabled]="emailForm.invalid || this.inLoading" (click)="sendForm()">
+                            {{'Enviar'}}
+                        </button>
+
+                        <a class="mat-body-2 link my-3 mb-0 primary-color" [routerLink]="['/authentication/login']">{{'Atrás'}}</a>
+                    </div> -->
+
+                    <div [formGroup]='form' class='p-3' fxLayout='column' fxLayoutAlign='start center' fxLayoutGap='16px'>
+
+                        <mat-form-field appearance='outline' class='w-100' color='accent' fxFlex='60'>
+                            <mat-label>{{'Nombre'}}</mat-label>
+                            <input #username [formControlName]="'name'" [placeholder]="'Nombre'" matInput (keypress)='utilService.keyPressOnlyLetters($event)' required>
+                            <mat-error *ngIf="form.controls['name'].hasError('required')">
+                                {{'El nombre de usuario es'}} <strong>{{'requerido'}}</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['name'].hasError('maxlength')">
+                                {{'El máximo de carácteres permitido es '}} <strong>{{'25'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance='outline' class='w-100' color='accent' fxFlex='60'>
+                            <mat-label>{{'Apellidos'}}</mat-label>
+                            <input [formControlName]="'lastName'" [placeholder]="'Apellidos'" matInput (keypress)='utilService.keyPressOnlyLetters($event)' required>
+                            <mat-error *ngIf="form.controls['lastName'].hasError('required')">
+                                {{'El apellido del usuario es'}} <strong>{{'requerido'}}</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['lastName'].hasError('maxlength')">
+                                {{'El máximo de carácteres permitido es '}} <strong>{{'25'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance='outline' class='w-100' color='accent' fxFlex='60'>
+                            <mat-label>{{'Correo electrónico'}}</mat-label>
+                            <input [formControlName]="'email'" [placeholder]="'Correo electrónico'" matInput required>
+                            <mat-error *ngIf="form.controls['email'].hasError('email')">
+                                {{'El correo electrónico no es'}} <strong>{{'válido'}}</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <div [formGroup]='formPass' class='w-100' fxLayout='column' fxLayoutAlign='start start' fxLayoutGap='16px'>
+                            <mat-form-field appearance='outline' class='w-100' color='accent' fxFlex='60'>
+                                <mat-label>{{'Contraseña'}}</mat-label>
+                                <input [formControlName]="'password'" [placeholder]="'Contraseña'" [type]='passwordType' autocomplete='false' matInput>
+                                <mat-icon (click)="passwordType = 'text'" *ngIf="passwordType == 'password'" class='w-100' matSuffix>
+                                    visibility
+                                </mat-icon>
+                                <mat-icon (click)="passwordType = 'password'" *ngIf="passwordType == 'text'" class='w-100' matSuffix>
+                                    visibility_off
+                                </mat-icon>
+                                <mat-error *ngIf="formPass.controls['password'].hasError('required')">
+                                    {{'La contraseña es'}} <strong>{{'requerida'}}</strong>
+                                </mat-error>
+                                <mat-error *ngIf="formPass.controls['password'].hasError('minlength')">
+                                    {{'La contraseña debe tener al menos'}} <strong>{{'8 caracteres'}}</strong>
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field [ngClass]="{'mat-form-field-invalid': formPass.hasError('mismatch'), 'ng-invalid': formPass.hasError('mismatch'), 'ng-valid': !formPass.hasError('mismatch')}" appearance='outline' class='w-100' color='accent' fxFlex='60'>
+                                <mat-label>{{'Repetir Contraseña'}}</mat-label>
+                                <input [formControlName]="'repeat'" [ngClass]="{'ng-invalid': formPass.hasError('mismatch')}" [placeholder]="'Repetir Contraseña'" [type]='passwordType' matInput>
+                                <mat-icon (click)="passwordType = 'text'" *ngIf="passwordType == 'password'" class='w-100' matSuffix>
+                                    visibility
+                                </mat-icon>
+
+                                <mat-icon (click)="passwordType = 'password'" *ngIf="passwordType == 'text'" class='w-100' matSuffix>
+                                    visibility_off
+                                </mat-icon>
+                                <mat-error *ngIf="formPass.controls['repeat'].hasError('required')">
+                                    {{' La contraseña es'}} <strong>{{'requerida'}}</strong>
+                                </mat-error>
+                                <mat-error *ngIf="formPass.controls['repeat'].hasError('minlength')">
+                                    {{'La contraseña debe tener al menos'}} <strong>{{'8 caracteres'}}</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <button (click)='singUp()' [disabled]='form.invalid || inLoading' class='w-100' color='primary' mat-raised-button>
+                            {{'Registrarse' | uppercase}}
+                        </button>
+
+                        <a [routerLink]="['/authentication/forgot-password']" class='mat-body-2 link'>
+                            {{'Olvidé mi contraseña'}}
+                        </a>
+
+                        <div fxLayout='row' fxLayoutAlign='center center' fxLayoutGap='4px' class='w-100'>
+                            <span>{{'¿Ya tienes una cuenta?'}}</span>
+                            <a [routerLink]="['/authentication/login']" class='link'>
+                                {{'Inicia sesión'}}
+                            </a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </mat-card>
+    </div>
+</div>

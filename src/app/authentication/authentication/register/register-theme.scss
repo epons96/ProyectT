@@ -1,0 +1,26 @@
+@import '@angular/material/theming';
+@mixin email-forgot-pass-theme($primary, $primary-700, $primary-500, $primary-100, $accent) {
+    app-register {
+        .login-card {
+            .logoImage {
+                background-color: $primary;
+            }
+        }
+        .login-form {
+            #lineUnder {
+                background-color: $primary;
+            }
+        }
+        .example-full-width {
+            width: 100%;
+        }
+        .link {
+            &:hover {
+                color: $primary;
+            }
+        }
+        .login-background {
+            background-color: $primary;
+        }
+    }
+}
