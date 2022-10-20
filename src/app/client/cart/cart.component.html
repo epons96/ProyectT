@@ -1,26 +1,141 @@
-<p>cart works!</p>
-<div class="container">
-    <div class="cart-wrapper">
-        <div fxlayout="column" fxlayoutalign="space-around center" class="" style="
-        flex-direction: column;
-        box-sizing: border-box;
-        display: flex;
-        place-content: center space-around;
-        align-items: center;
-      ">
-            <div fxLayout="column" fxLayoutAlign="center center" class="col-sm-12 empty-cart-cls text-center ">
-                <img src="assets/img/backet-01.png" width="200px" class="img-fluid mb-4" />
-                <h3 class=""><strong>SU CESTA ESTÁ VACÍA.</strong></h3>
-                <p class="mt-2 color-grey-700" style="font-size: 18px; font-weight: 500">
-                    Explore más para seleccionar algunos elementos.
-                </p>
+<section>
+    <div class="container p-5">
+        <div class="cart-wrapper">
+            <div *ngIf="this.cartProducts?.length == 0" fxLayout="column" fxLayoutAlign="space-around center">
+                <div fxLayout="column" fxLayoutAlign="center center" class="col-sm-12 empty-cart-cls text-center">
+                    <img src="assets/img/backet-01.png" width="200px" class="img-fluid mb-4" />
+                    <h3><strong>SU CESTA ESTÁ VACÍA.</strong></h3>
+                    <p class="mt-2 color-grey-700" style="font-size: 18px; font-weight: 500">
+                        Explore más para seleccionar algunos elementos.
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <a color="primary" mat-raised-button="" class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" style="color: #fff !important" tabindex="0" aria-disabled="false" href="/client/products"><span
+                            class="mat-button-wrapper"><span style="color: #fff !important">Seguir
+                                comprando</span></span>
+                        <span class="mat-ripple mat-button-ripple"></span>
+                        <span class="mat-button-focus-overlay"></span></a>
+                </div>
             </div>
-            <div class="mt-3">
-                <a color="primary" mat-raised-button="" class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" style="color: #fff !important" tabindex="0" aria-disabled="false" href="/client/products"><span
-                        class="mat-button-wrapper"><span style="color: #fff !important">Seguir comprando</span></span>
-                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
-                    <span class="mat-button-focus-overlay"></span></a>
+
+            <!-- <section  fxhide.lt-md="" style="position: relative;" > 
+            <mat-card  class="mat-card mat-focus-indicator p-0 mb-4 "
+                style="border-radius: 8px;">
+                <div  class="mat-table cart-table">
+                    <div  class="mat-header-row">
+                        <div  class="mat-header-cell">Producto</div>
+                        <div  class="mat-header-cell">Nombre</div>
+                        <div  class="mat-header-cell">Categoría</div>
+                        <div  class="mat-header-cell">Precio</div>
+                        <div  class="mat-header-cell">Cantidad</div>
+                        <div  class="mat-header-cell">Total</div>
+                        <div  class="mat-header-cell">Acción</div>
+                    </div>
+                    <div  class="mat-row ">
+                        <div  class="mat-cell"><img 
+                                src="https://api.mibulevar.com/v1/public/e7b9a6d6-3e3d-4be9-9b08-e3b6d9b4bd49.webp"
+                                >
+                           
+                           
+                        </div>
+                        <div  class="mat-cell"><a  class="link-nav-a line-clamp"
+                                href="/product?productId=9da51ca0-322c-4157-9c27-e6956e94739f">Media Pierna de Cerdo (4kg)</a>
+                        </div>
+                        <div  class="mat-cell"><a  class="product-name">Carnes </a>
+                        </div>
+                        <div  class="mat-cell price">
+                          
+                            <p  class="mat-body-2 m-0 "> 26,40&nbsp;US$ </p>
+                            <p  class="mat-body-2 m-0 " style="font-size: 15px;"> Desde 1
+                                unidades </p>
+                           
+                        </div>
+                        <div  class="mat-cell ">
+                            <div  fxLayout="row" fxLayoutAlign="center center" class=""
+                                style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center; align-items: center;">
+                                <div  fxLayout="row" fxLayoutAlign="center start" 
+                                    style="flex-direction: row; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
+                                    <div  class="addQuantity"><button 
+                                            mattooltip="Remove" class="mat-tooltip-trigger leftBtn" disabled=""
+                                             >
+                                            <mat-icon  role="img"
+                                                class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true"
+                                                data-mat-icon-type="font">keyboard_arrow_left</mat-icon>
+                                        </button>
+                                       <input  type="text"
+                                            class="inputBtn   ng-valid" max="100" min="1"><button
+                                             mattooltip="Add" class="mat-tooltip-trigger rightBtn"
+                                             >
+                                            <mat-icon  role="img"
+                                                class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true"
+                                                data-mat-icon-type="font">keyboard_arrow_right</mat-icon>
+                                        </button>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="mat-cell total"> 26,40&nbsp;US$ </div>
+                        <div  class="mat-cell text-center">
+                            <div  class="p-1"><button  color="warn"
+                                    mat-icon-button=""
+                                    class="mat-focus-indicator mat-tooltip-trigger mat-icon-button mat-button-base mat-warn"
+                                     ><span
+                                        class="mat-button-wrapper">
+                                        <mat-icon  role="img"
+                                            class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true"
+                                            data-mat-icon-type="font">close</mat-icon>
+                                    </span><span 
+                                        class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
+                                        class="mat-button-focus-overlay"></span></button>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </section> -->
+
+
+            <div *ngIf="this.cartProducts?.length > 0" class="p-5" fxLayout="column" fxLayoutAlign="start stretch" fxlayoutgap="gappx">
+                <mat-toolbar class="mt-2  mb-3">
+                    <mat-toolbar-row fxLayoutAlign="space-between center">
+                        <span class="total">Total a pagar:
+                            <span class="subtotal-price">{{total | currency:'EUR'}}</span></span>
+                    </mat-toolbar-row>
+                    <mat-toolbar-row>
+                        <div class="proceed-pay" (click)="onPayCart(cartProducts)">
+                            {{'Proceder al pago (' + cartProducts?.length + ' productos)'}}
+                        </div>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+
+                <mat-card *ngFor="let item of cartProducts" fxFlex="100" class="mat-focus-indicator pt-0 px-0 mx-auto w-100" style="position: relative; padding: 0 !important">
+                    <div fxLayout="row" fxLayoutAlign="start">
+
+                        <div class="text-align-center cart-card-image" style="background-color: #fafafa">
+                            <img alt="Image" class="imageProduct p1" width="140px" src="../../../../../assets/img/noimage.png" />
+                        </div>
+
+                        <mat-card-content fxFlex="100" fxLayout="column" fxLayoutAlign="start start" class="mb-0">
+                            <p class=" mb-0">{{item.market}}</p>
+                            <p class="module line-clamp" style="font-size: 15px; text-align: left">
+                                {{item.name}}
+                            </p>
+                            <div class="mt-1 mb-3">
+                                <p class="mat-body-2" style="text-align: left; font-size: 1.1rem">
+                                    {{item.price | currency:'EUR'}}
+                                </p>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between start" class="buttoms-actions">
+                                <button (click)="removeFromCart(item)" mat-stroked-button="" class="mat-focus-indicator mat-tooltip-trigger uppercase btn-remove-all mat-stroked-button mat-button-base">
+                                    <span class="mat-button-wrapper"> Eliminar </span>
+                                </button>
+                            </div>
+                        </mat-card-content>
+                    </div>
+                </mat-card>
             </div>
         </div>
     </div>
-</div>
+</section>
