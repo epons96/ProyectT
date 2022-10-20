@@ -70,14 +70,14 @@
         "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2NDc4NSwidXVpZCI6IjM4M2Y3ZjhmLTdkMDEtNDFhMi05NjM2LTI3MDEzZDRlNjVkZCIsInVzZXJuYW1lIjoidmVudGFzNUBkYWlxdWlyaWN1YmEuY29tIiwiZGQiOiIyMDIyLTEwLTA0VDE3OjU4OjMxLjgwMloiLCJpc1N1cGVyQ3VjbyI6ZmFsc2UsInJhbmRvbSI6MC4yNTExOTcxNTgyOTE3NzAwMywiaXNzdWVEYXRlIjoiMjAyMi0xMC0wNFQxNzo1ODozMS44MDJaIiwiZGF0ZSI6IjIwMjItMTAtMDRUMTc6NTg6MzEuODAyWiIsImxhc3RMb2dvdXQiOiIyMDIyLTA4LTAyVDE5OjU4OjQwLjAwMFoifSwiaWF0IjoxNjY0OTA2MzExLCJleHAiOjE2NjUwNzkxMTF9.SUtfG8MPlZJB5eFnq3XFTFunGe4CKzll8aVsW26t-S4"
     },
     "users": [{
-            "name": "Nombre",
-            "lastname": "Apellido",
-            "phone": 55555555,
+            "name": "jorge",
+            "lastname": "asd",
+            "phone": 54134878,
             "email": "asd@mail.co",
             "description": null,
             "role": "admin",
-            "username": "admin",
-            "password": "admin",
+            "username": "userA",
+            "password": "123",
             "id": 3
         },
         {
@@ -90,18 +90,6 @@
             "phone": 54134878,
             "email": "asd@mail.co",
             "description": null
-        },
-        {
-            "name": "client",
-            "lastName": "client",
-            "email": "client@client.as",
-            "passwords": {
-                "password": "123",
-                "repeat": "123"
-            },
-            "username": "client",
-            "password": "123",
-            "role": "client"
         }
     ],
     "productos": {
