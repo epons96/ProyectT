@@ -1,7 +1,7 @@
 .card-product {
     width: 300px;
     margin: 8px;
-    border: 1px px solid #e8e8e8;
+    border: 1px solid #e8e8e8;
     border-radius: 4px;
     position: relative;
 }
@@ -17,4 +17,32 @@
 
 .card-product.product-info-wrapper {
     height: 140px;
+}
+
+.btnAddCart {
+    background-color: yellowgreen;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: #fff;
+    color: gray;
+    border: 1px solid grey;
+    box-shadow: none;
+    transition: all .3s ease;
+    z-index: 10;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card-product .product-info-wrapper .category {
+    font-size: 13px;
+    color: #424242;
+    line-height: normal;
+}
+
+.link-nav-a {
+    text-decoration: none;
+    color: #404040 !important;
 }

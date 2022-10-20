@@ -5,6 +5,7 @@ import { ProductsRoutingModule } from "src/app/client/products/products-routing.
 import { ProductComponent } from "./product/product.component";
 import { MatIconModule } from "@angular/material/icon";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { LayoutModule } from "../../shared/layout/layout.module";
 
 @NgModule({
   declarations: [ProductLayoutComponent, ProductComponent],
@@ -13,6 +14,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     ProductsRoutingModule,
     MatIconModule,
     FlexLayoutModule,
+    LayoutModule,
   ],
 })
 export class ProductsModule {}
