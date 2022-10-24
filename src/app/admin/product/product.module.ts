@@ -26,6 +26,7 @@ import { DialogAddEditProductComponent } from "./dialog-add-edit-product/dialog-
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { DialogShowProductComponent } from "./dialog-show-product/dialog-show-product.component";
 import { ProductRoutingModule } from "./product-routing.module";
+import { BasicSnackbarModule } from "src/app/shared/basic-snackbar/basic-snackbar.module";
 ///////////////////////////////////////////////////////////////////
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ProductRoutingModule } from "./product-routing.module";
     MatNativeDateModule,
     MatAutocompleteModule,
     ConfirmationDialogModule,
+    BasicSnackbarModule,
   ],
   declarations: [
     ProductTableComponent,

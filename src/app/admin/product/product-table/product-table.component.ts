@@ -17,6 +17,7 @@ import { ProductService } from "src/app/core/product/product.service";
 import { DialogShowProductComponent } from "../dialog-show-product/dialog-show-product.component";
 import { DialogAddEditProductComponent } from "../dialog-add-edit-product/dialog-add-edit-product.component";
 import { BreadcrumbService } from "src/app/shared/layout/breadcrumd/service/breadcrumb.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-product",
@@ -59,6 +60,7 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     "select",
     "name",
     "quantity",
+    "price",
     "market",
     "actions",
   ];
@@ -66,6 +68,7 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     "selectF",
     "nameF",
     "quantityF",
+    "priceF",
     "marketF",
     "actionsF",
   ];
@@ -76,7 +79,7 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     private breadcrumbService: BreadcrumbService,
     public dialog: MatDialog,
     public utilsService: UtilsService,
-    // private showToastr: ToastrService,
+    private _snackBar: MatSnackBar,
     private productService: ProductService
   ) {
     this._unsubscribeAll = new Subject<any>();
@@ -151,9 +154,9 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     const searchFilter = this.formFilters.value;
     this.productService.getAllProducts(this.query, searchFilter).subscribe(
       (data) => {
-        this.initTable(data.data);
+        this.initTable(data);
         console.log(data);
-        this.query.total = data.meta.pagination.total;
+        // this.query.total = data.meta.pagination.total;
         this.selection.clear();
         this.isLoading = false;
       },
@@ -167,6 +170,8 @@ export class ProductTableComponent implements OnInit, OnDestroy {
   initTable(data) {
     this.allProducts = data;
     this.dataSource = new MatTableDataSource(data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   createSearchForm() {
@@ -251,22 +256,21 @@ export class ProductTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  onEditProduct(conciliation): void {
-    this.productService.getProduct(conciliation.id).subscribe((data) => {
-      let dialogRef: MatDialogRef<DialogAddEditProductComponent, any>;
-      dialogRef = this.dialog.open(DialogAddEditProductComponent, {
-        panelClass: "app-dialog-add-edit-product",
-        maxWidth: "100vw",
-        maxHeight: "100vh",
-        data: {
-          isEditing: true,
-          selectedConciliation: conciliation,
-        },
-      });
+  onEditProduct(product): void {
+    // this.productService.getProduct(product.id).subscribe((data) => {
+    let dialogRef: MatDialogRef<DialogAddEditProductComponent, any>;
+    dialogRef = this.dialog.open(DialogAddEditProductComponent, {
+      panelClass: "app-dialog-add-edit-product",
+      maxWidth: "100vw",
+      maxHeight: "100vh",
+      data: {
+        isEditing: true,
+        selectedProducts: product,
+      },
+    });
 
-      dialogRef.afterClosed().subscribe(() => {
-        this.refreshData();
-      });
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshData();
     });
   }
 
@@ -287,26 +291,30 @@ export class ProductTableComponent implements OnInit, OnDestroy {
               this.productService.removeProduct(item).toPromise()
             )
           );
-          // this.showToastr.success(
-          //   "Elementos correctamente eliminados",
-          //   "Éxito"
-          // );
+          this._snackBar.open("El producto ha sido eliminado con éxito.", "", {
+            duration: 2000,
+            panelClass: "success-snackbar",
+          });
           this.refreshData();
         }
       } catch (error) {
+        this._snackBar.open("Error al eliminar el elemento " + error, "", {
+          duration: 2000,
+          panelClass: "error-snackbar",
+        });
         this.refreshData();
       }
     });
   }
 
-  onConciliationDetails(conciliation): void {
-    this.productService.getProduct(conciliation.id).subscribe((data) => {
+  onProductDetails(product): void {
+    this.productService.getProduct(product.id).subscribe((data) => {
       const dialogRef = this.dialog.open(DialogShowProductComponent, {
-        panelClass: "app-dialog-add-edit-conciliate",
+        panelClass: "app-dialog-add-edit-product",
         maxWidth: "100vw",
         maxHeight: "100vh",
         data: {
-          selectedConciliation: data,
+          selectedProduct: data,
           urlImage: null,
         },
       });

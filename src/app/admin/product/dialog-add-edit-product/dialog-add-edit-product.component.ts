@@ -10,6 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { ProductService } from "src/app/core/product/product.service";
 import { LoggedInUserService } from "src/app/core/loggedInUser/logged-in-user.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-dialog-add-edit-product",
@@ -35,13 +36,15 @@ export class DialogAddEditProductComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<DialogAddEditProductComponent>,
     private loggedInUserService: LoggedInUserService,
     private fb: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    private _snackBar: MatSnackBar
   ) {
     this.loggedInUser = this.loggedInUserService.getLoggedInUser();
     this._unsubscribeAll = new Subject<any>();
 
     this.isEditing = data.isEditing;
     this.selectedProducts = data.selectedProducts;
+    console.log(data);
   }
 
   ngOnInit(): void {
@@ -55,65 +58,71 @@ export class DialogAddEditProductComponent implements OnInit, OnDestroy {
         quantity: [null, [Validators.required]],
         market: [null, [Validators.required]],
         description: [null, []],
+        price: [null, [Validators.required]],
       });
     } else {
       this.form = this.fb.group({
+        id: [this.selectedProducts.id],
         name: [this.selectedProducts.name, [Validators.required]],
         quantity: [this.selectedProducts.quantity, [Validators.required]],
         market: [this.selectedProducts.market, [Validators.required]],
         description: [this.selectedProducts.description, []],
+        price: [this.selectedProducts.price, [Validators.required]],
       });
     }
   }
 
   public onSave(): void {
     if (!this.isEditing) {
+      this.isSaving = true;
       let data = { ...this.form.value };
-      // this.elementService.create(data)
-      //   .subscribe({
-      //     next: (output) => {
-      //       this.showToastr.showSucces("Elemento creado correctamente");
-      //       this.dialogRef.close(output?.data);
-      //     },
-      //     error: (error: any) => {
-      //       this.isSaving = false;
-      //       if (error.status === 404 || error.status === 403) {
-      //         this.dialogRef.close();
-      //       }
-      //     },
-      //   });
+      this.productService.addProduct(data).subscribe({
+        next: (output) => {
+          this._snackBar.open("Elemento creado correctamente", "", {
+            duration: 2000,
+            panelClass: "success-snackbar",
+          });
+          // this.showToastr.showSucces("Elemento creado correctamente");
+          this.dialogRef.close(output?.name);
+          this.isSaving = false;
+        },
+        error: (error: any) => {
+          this.isSaving = false;
+          if (error.status === 404 || error.status === 403) {
+            this._snackBar.open("Error al crear el elemento", "", {
+              duration: 2000,
+              panelClass: "error-snackbar",
+            });
+            this.dialogRef.close();
+          }
+        },
+      });
     } else {
       let data = { ...this.form.value };
-      // this.elementService.edit(this.selectedProducts.id, data)
-      //   .subscribe({
-      //     next: (output) => {
-      //       const data = {
-      //         ConciliationId: this.selectedProducts.id,
-      //         reservationIds: this.form.value.reservationIds
-      //       };
-      //       this.elementService.addReservations(data)
-      //         .subscribe({
-      //           next: (output) => {
-      //             this.showToastr.showSucces(_t("Elemento editado correctamente"));
-      //             this.dialogRef.close(output?.data);
-      //           },
-      //           error: (error: any) => {
-      //             this.isSaving = false;
-      //             if (error.status === 404 || error.status === 403) {
-      //               this.dialogRef.close();
-      //             }
-      //           },
-      //         });
-      //       this.showToastr.showSucces("Elemento creado correctamente");
-      //       this.dialogRef.close(output);
-      //     },
-      //     error: (error: any) => {
-      //       this.isSaving = false;
-      //       if (error.status === 404 || error.status === 403) {
-      //         this.dialogRef.close();
-      //       }
-      //     },
-      //   });
+      console.log(data);
+      console.log(this.form.value);
+      data.id = this.selectedProducts.id;
+      this.productService.editProduct(data).subscribe(
+        (data) => {
+          if (data) {
+            this._snackBar.open("Elemento editado correctamente", "", {
+              duration: 2000,
+              panelClass: "success-snackbar",
+            });
+          }
+          this.dialogRef.close(true);
+        },
+        (error: any) => {
+          this.isSaving = false;
+          if (error.status === 404 || error.status === 403) {
+            this._snackBar.open("Error al editar el elemento", "", {
+              duration: 2000,
+              panelClass: "error-snackbar",
+            });
+            this.dialogRef.close();
+          }
+        }
+      );
     }
   }
 

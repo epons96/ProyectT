@@ -57,7 +57,7 @@
                 <span fxHide.xs class="ml-2 mat-title mb-0">{{ 'elementos seleccionados' }}</span>
             </div>
             <div>
-                <button *ngIf="selection.selected.length == 1" mat-button (click)="onConciliationDetails(selection.selected[0])">
+                <button *ngIf="selection.selected.length == 1" mat-button (click)="onProductDetails(selection.selected[0])">
                     <mat-icon aria-label="Example icon-button with a heart icon">visibility</mat-icon>
                     <span fxHide.xs id="detalles" class="mat-button">{{ 'Detalles' }}</span>
                 </button>
@@ -109,6 +109,15 @@
             </td>
         </ng-container>
 
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span class="mat-body-2" style="text-transform: capitalize">{{ 'Precio' }}</span>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <p class="mat-body-1">{{ element.price }}</p>
+            </td>
+        </ng-container>
+
         <ng-container matColumnDef="market">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <span class="mat-body-2" style="text-transform: capitalize">{{ 'Mercado' }}</span>
@@ -144,6 +153,11 @@
         </ng-container>
 
         <ng-container matColumnDef="quantityF">
+            <th mat-header-cell *matHeaderCellDef>
+            </th>
+        </ng-container>
+
+        <ng-container matColumnDef="priceF">
             <th mat-header-cell *matHeaderCellDef>
             </th>
         </ng-container>

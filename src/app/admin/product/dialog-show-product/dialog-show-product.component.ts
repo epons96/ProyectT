@@ -22,7 +22,7 @@ export class DialogShowProductComponent {
     public dialogRef: MatDialogRef<DialogShowProductComponent>
   ) {
     this.dialogRef.disableClose = true;
-    this.element = data.selectedConciliation.data;
+    this.element = data.selectedProduct;
 
     console.log(this.element);
   }
