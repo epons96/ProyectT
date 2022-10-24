@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatSidenav } from "@angular/material/sidenav";
 import { Router } from "@angular/router";
@@ -7,6 +7,11 @@ import { IUser } from "../../core/interfaces/user.class";
 import { BreadcrumbService } from "./breadcrumd/service/breadcrumb.service";
 import { AuthenticationService } from "../../core/authentication/authentication.service";
 import { DialogUserTableAddEditComponent } from "src/app/admin/user/dialog-user-table-add-edit/dialog-user-table-add-edit.component";
+import { ITask } from "../../core/interfaces/task.class";
+import { Observable } from "rxjs";
+import { AppState } from "src/app/app.state";
+import { Store } from "@ngrx/store";
+import { CartService } from "../../core/cart/cart.service";
 
 @Component({
   selector: "app-layout",
@@ -22,13 +27,21 @@ export class LayoutComponent implements OnInit {
   public separator = "/";
   applyStyle = false;
 
+  tasks: Observable<ITask[]>;
+  taskss: any[];
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private loggedInUserService: LoggedInUserService,
     private breadcrumbService: BreadcrumbService,
-    private authService: AuthenticationService
-  ) {}
+    private authService: AuthenticationService,
+    private cartService: CartService,
+    private ref: ChangeDetectorRef,
+    private store: Store<AppState>
+  ) {
+    this.tasks = this.store.select("tasks");
+  }
 
   logout(): void {
     this.authService.setLogout();
@@ -85,6 +98,16 @@ export class LayoutComponent implements OnInit {
         this.breadcrumb = response?.snapshot?.data?.breadcrumb;
         this.breadcrumbService.clearBreadcrumd();
         this.breadcrumbService.setBreadcrumd(this.breadcrumb, true);
+      }
+    });
+  }
+
+  getcartProducts() {
+    this.cartService.getCart().subscribe((data) => {
+      if (data) {
+        this.taskss = data;
+        console.log(this.taskss);
+        this.ref.markForCheck();
       }
     });
   }

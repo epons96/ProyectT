@@ -8,6 +8,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+import { taskReducer } from "./store/tasks.reducer";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     MatIconModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({ tasks: taskReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

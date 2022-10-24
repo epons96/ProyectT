@@ -56,6 +56,12 @@
                                 <!-- <mat-icon>house</mat-icon> -->
                                 {{ 'Ir al carrito' }}
                             </button>
+                            <mat-divider></mat-divider>
+                            <ul>
+                                <li *ngFor="let task of tasks | async">
+                                    <h3>{{ task.name }}</h3>
+                                </li>
+                            </ul>
                         </mat-menu>
 
                         <img class="ImageAvatar" *ngIf="!this.loggedInUser.image" src="{{ '../../../../../assets/img/user.png' }}" alt="user" />
