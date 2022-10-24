@@ -11,6 +11,7 @@ import { PaymentService } from "src/app/core/payment/payment.service";
 import { ConfirmationDialogComponent } from "src/app/shared/confirmation-dialog/confirmation-dialog.component";
 import { BreadcrumbService } from "src/app/shared/layout/breadcrumd/service/breadcrumb.service";
 import { CartService } from "../../core/cart/cart.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-cart",
@@ -31,7 +32,8 @@ export class CartComponent implements OnInit {
     private loggedInUserService: LoggedInUserService,
     private paymentService: PaymentService,
     private ref: ChangeDetectorRef,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {
     this.loggedInUser = this.loggedInUserService.getLoggedInUser();
   }
@@ -46,7 +48,6 @@ export class CartComponent implements OnInit {
     this.cartService.getCart().subscribe((data) => {
       this.total = 0;
       if (data) {
-        console.log("data");
         this.cartProducts = data;
         this.cartProducts.forEach((element) => {
           this.total = element.price + this.total;
@@ -57,13 +58,25 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(item: any) {
-    this.cartService.removeCart(item).subscribe();
+    this.cartService.removeCart(item).subscribe((res) => {
+      if (res) {
+        this._snackBar.open("El producto ha sido eliminado con éxito.", "", {
+          duration: 2000,
+          panelClass: "success-snackbar",
+        });
+      } else {
+        this._snackBar.open("Error al eliminar el elemento ", "", {
+          duration: 2000,
+          panelClass: "error-snackbar",
+        });
+      }
+    });
     this.getcartProducts();
     this.ref.markForCheck();
   }
 
   async onPayCart(element) {
-    console.log(element);
+    let data = element;
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: "450px",
       data: {
@@ -72,23 +85,41 @@ export class CartComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe(async (result) => {
-      console.log(result);
       try {
         if (result) {
-          const data = await Promise.all(
-            element.map((item) => {
-              console.log(item);
-              item.UserId = this.loggedInUser.id;
-              this.paymentService.payCart(item).toPromise();
-            })
-          );
+          let UserId = this.loggedInUser.id;
+          data.createdAt = new Date().toISOString();
+          data.UserID = UserId;
+          this.paymentService.payCart(data).subscribe((res) => {
+            this._snackBar.open("Su pago ha sido exitoso.", "", {
+              duration: 2000,
+              panelClass: "success-snackbar",
+            });
+          });
+          // const data = await Promise.all(
+          //   element.map((item) => {
+          //     console.log(item);
+          //     item.UserId = this.loggedInUser.id;
+          //     item.createdAt = new Date().toISOString();
+          //     this.paymentService.payCart(item).toPromise();
+          //   })
+          // );
+          const cartIdsArray = element.map((cart) => cart);
+          cartIdsArray.forEach((id) => {
+            this.cartService
+              .removeCart(id)
+              .subscribe(() => this.getcartProducts());
+          });
           // this.showToastr.success(
           //   "Pago exitoso",
           //   "Éxito"
           // );
-          this.getcartProducts();
         }
       } catch (error) {
+        this._snackBar.open("Error al realizar el pago " + error, "", {
+          duration: 2000,
+          panelClass: "error-snackbar",
+        });
         this.getcartProducts();
       }
     });
