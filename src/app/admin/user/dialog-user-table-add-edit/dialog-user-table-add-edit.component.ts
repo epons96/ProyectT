@@ -6,7 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { ToastrService } from "ngx-toastr";
+// import { ToastrService } from "ngx-toastr";
 import { format, isValidNumber } from "libphonenumber-js";
 import { ElementRef, ViewChild } from "@angular/core";
 import { LoggedInUserService } from "src/app/core/loggedInUser/logged-in-user.service";
@@ -15,6 +15,7 @@ import { environment } from "src/environments/environment";
 import { EMAIL_REGEX, PHONE_REGEX } from "src/app/core/const/const.pattern";
 import { UserService } from "src/app/core/user/user.service";
 import { UtilsService } from "src/app/core/utils/utils.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-dialog-user-table-add-edit",
@@ -50,13 +51,13 @@ export class DialogUserTableAddEditComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogUserTableAddEditComponent>,
-    // private toastr: ToastrService,
+    private _snackBar: MatSnackBar,
     private loggedInUserService: LoggedInUserService,
     private cdRef: ChangeDetectorRef,
     private fb: FormBuilder,
     public utilsService: UtilsService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private userService: UserService // public translate: TranslateService
+    private userService: UserService
   ) {
     console.log(data);
     this.loggedInUser = this.loggedInUserService.getLoggedInUser();
@@ -200,18 +201,7 @@ export class DialogUserTableAddEditComponent implements OnInit {
     if (this.currentUser?.id) {
       newData = this.form.value;
       newData.id = this.currentUser.id;
-
-      // if (newData.role === 'admin') {
       newData.password = this.form.value.passwords.password;
-      // } else if (newData.role === 'client') {
-      //   newData.password = this.form.value.passwords.password;
-      // } else if (newData.role === 'supervisor') {
-      //   newData.password = this.form.value.passwords.password;
-      // }
-
-      if (this.loggedInUser.role === "superadmin") {
-        newData.role = this.currentUser.role;
-      }
 
       if (this.loggedInUser.id === this.currentUser.id) {
         for (const key in newData) {
@@ -236,28 +226,24 @@ export class DialogUserTableAddEditComponent implements OnInit {
             this.loggedInUserService.updateUserProfile(data);
           }
           this.dialogRef.close(true);
-          // this.toastr.success(
-          //   "El Usuario ha sido modificado con éxito.",
-          //   "Felicidades!",
-          //   {
-          //     timeOut: 2000,
-          //     progressBar: true,
-          //     positionClass: "toast-bottom-right",
-          //   }
-          // );
+          this._snackBar.open("El Usuario ha sido modificado con éxito.", "", {
+            duration: 2000,
+            panelClass: "success-snackbar",
+          });
         },
         (error) => {
           this.animate_button = false;
+          this._snackBar.open("Error al modificar el usuario", "", {
+            duration: 2000,
+            panelClass: "error-snackbar",
+          });
         }
       );
     }
 
     if (!this.currentUser?.id) {
       newData = this.form.value;
-      if (newData.role === "admin" || newData.role === "supervisor") {
-        newData.password = this.form.value.passwords.password;
-      } else {
-        // newData.password = 'cliente';
+      if (newData.role === "admin") {
         newData.password = this.form.value.passwords.password;
       }
 
@@ -266,20 +252,18 @@ export class DialogUserTableAddEditComponent implements OnInit {
           this.animate_button = false;
           this.dialogRef.close(true);
 
-          // this.toastr.success(
-          //   "El Usuario ha sido creada con éxito.",
-          //   "Felicidades!",
-          //   {
-          //     timeOut: 2000,
-          //     progressBar: true,
-          //     positionClass: "toast-bottom-right",
-          //   }
-          // );
+          this._snackBar.open("El Usuario ha sido creado con éxito.", "", {
+            duration: 2000,
+            panelClass: "success-snackbar",
+          });
           return true;
         },
         (error) => {
           this.animate_button = false;
-          this.utilsService.errorHandle(error);
+          this._snackBar.open("Error al crear el usuario", "", {
+            duration: 2000,
+            panelClass: "error-snackbar",
+          });
         }
       );
     }

@@ -24,6 +24,7 @@ import { LoggedInUserService } from "../../../core/loggedInUser/logged-in-user.s
 import { UserService } from "src/app/core/user/user.service";
 import { ConfirmationDialogComponent } from "../../../shared/confirmation-dialog/confirmation-dialog.component";
 import { BreadcrumbService } from "src/app/shared/layout/breadcrumd/service/breadcrumb.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-user-home",
@@ -59,12 +60,11 @@ export class UserHomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    // private toastr: ToastrService,
     private loggedInUserService: LoggedInUserService,
     private breadcrumbService: BreadcrumbService,
     public dialog: MatDialog,
-    // private showToastrService: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private _snackBar: MatSnackBar
   ) {
     this.loggedInUser = this.loggedInUserService.getLoggedInUser();
     this.createSearchForm();
@@ -106,16 +106,6 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     };
 
     this.onRefreshData(params);
-
-    // return this.allUsers.filter(
-    //   (user) =>
-    //     user.username.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-    //     user.role.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-    //     (user.name && user.name.toLowerCase().indexOf(name.toLowerCase()) >= 0) ||
-    //     (user.lastname && user.lastname.toLowerCase().indexOf(name.toLowerCase()) >= 0) ||
-    //     (user.cellphone && user.cellphone.toLowerCase().indexOf(name.toLowerCase()) >= 0) ||
-    //     (user.email && user.email.toLowerCase().indexOf(name.toLowerCase()) >= 0),
-    // );
   }
 
   @HostListener("window:resize", ["$event"])
@@ -133,9 +123,11 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     this.selection.clear();
     if (this.role !== "any") {
       // role: this.role,
-      this.userService.getAllUsers({ limit: 0, offset: 0 }).subscribe((val) => {
-        this.onInitTable(val);
-      });
+      this.userService
+        .getAllUsers({ limit: 0, offset: 0 }, params)
+        .subscribe((val) => {
+          this.onInitTable(val);
+        });
     }
   }
 
@@ -307,25 +299,19 @@ export class UserHomeComponent implements OnInit, OnDestroy {
 
   successHandle(data) {
     this.onRefreshData();
-    // this.toastr.success(
-    //   "El usuario ha sido eliminado con éxito.",
-    //   "Felicidades!",
-    //   {
-    //     timeOut: 5000,
-    //     progressBar: true,
-    //     positionClass: "toast-bottom-right",
-    //   }
-    // );
+    this._snackBar.open("El usuario ha sido eliminado con éxito.", "", {
+      duration: 2000,
+      panelClass: "success-snackbar",
+    });
   }
 
   errorHandle(error) {
-    const message = error.error.message
+    const message = error?.error?.message
       ? error.error.message
       : "Ha ocurrido un error.";
-    // this.toastr.error(message, "Error!", {
-    //   timeOut: 5000,
-    //   progressBar: true,
-    //   positionClass: "toast-bottom-right",
-    // });
+    this._snackBar.open(message, "", {
+      duration: 2000,
+      panelClass: "error-snackbar",
+    });
   }
 }

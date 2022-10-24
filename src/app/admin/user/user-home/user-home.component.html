@@ -12,7 +12,7 @@
                         <mat-icon aria-label="Example icon-button with a heart icon">refresh</mat-icon>
                         {{'Refrescar'}}
                     </button>
-                    <button mat-button color="primary" (click)="onCreateUser()" *ngIf="loggedInUser.role == 'admin' && this.loggedInUser.canCreateUsers && !disability">
+                    <button mat-button color="primary" (click)="onCreateUser()" *ngIf="loggedInUser.role == 'admin'">
                         <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                         {{'Adicionar'}}
                     </button>
@@ -51,7 +51,7 @@
             <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
                 <span fxHide.xs class="mat-title m-0">1&nbsp;{{'elemento seleccionado'}}</span>
                 <div>
-                    <button mat-button color="primary" *ngIf="loggedInUser.role === 'admin' && this.loggedInUser.canEditUsers" (click)="onEditUser()">
+                    <button mat-button color="primary" *ngIf="loggedInUser.role === 'admin'" (click)="onEditUser()">
                         <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
                         <span class="mat-button">{{'Editar'}}</span>
                     </button>

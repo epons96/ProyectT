@@ -45,6 +45,7 @@ import { DialogUserTableAddEditModule } from "../user/dialog-user-table-add-edit
 import { UserLayoutComponent } from "./user-layout/user-layout.component";
 import { UserHomeComponent } from "./user-home/user-home.component";
 import { NgpImagePickerModule } from "ngp-image-picker";
+import { BasicSnackbarModule } from "../../shared/basic-snackbar/basic-snackbar.module";
 // //////////////////////////////////////////////////////////////
 
 registerLocaleData(localeEs, "es");
@@ -87,6 +88,7 @@ registerLocaleData(localeEs, "es");
     ConfirmationDialogModule,
     DialogUserTableAddEditModule,
     NgpImagePickerModule,
+    BasicSnackbarModule,
   ],
   declarations: [UserHomeComponent, UserLayoutComponent],
   providers: [{ provide: MatPaginatorIntl }],
