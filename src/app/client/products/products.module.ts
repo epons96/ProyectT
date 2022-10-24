@@ -6,6 +6,7 @@ import { ProductComponent } from "./product/product.component";
 import { MatIconModule } from "@angular/material/icon";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { LayoutModule } from "../../shared/layout/layout.module";
+import { BasicSnackbarModule } from "../../shared/basic-snackbar/basic-snackbar.module";
 
 @NgModule({
   declarations: [ProductLayoutComponent, ProductComponent],
@@ -15,6 +16,7 @@ import { LayoutModule } from "../../shared/layout/layout.module";
     MatIconModule,
     FlexLayoutModule,
     LayoutModule,
+    BasicSnackbarModule,
   ],
 })
 export class ProductsModule {}

@@ -19,7 +19,7 @@ export class ProductLayoutComponent implements OnInit {
     this.breadcrumbService.setBreadcrumd("Tienda ABC", true);
 
     this.productService.getAllProducts().subscribe((res) => {
-      this.products = res.data;
+      this.products = res;
     });
   }
 }

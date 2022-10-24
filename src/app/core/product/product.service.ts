@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { IPagination } from "../interfaces/pagination.class";
+import { IProduct } from "../interfaces/product.class";
 
 @Injectable({
   providedIn: "root",
@@ -15,14 +16,6 @@ export class ProductService {
   httpOptions = {};
 
   constructor(private httpClient: HttpClient) {}
-
-  editProduct(data) {
-    return this.httpClient.patch<any>(
-      this.url + `/${data.id}`,
-      data,
-      this.httpOptions
-    );
-  }
 
   getAllProducts(query?: IPagination, params?) {
     let httpParams = new HttpParams();
@@ -55,12 +48,6 @@ export class ProductService {
           "%" + params.description.toString() + "%"
         );
       }
-      if (params.AgencyDestination) {
-        httpParams = httpParams.set(
-          "AgencyDestination",
-          params.AgencyDestination.toString()
-        );
-      }
     }
     return this.httpClient.get<any>(this.url).pipe(
       map((data) => {
@@ -75,5 +62,18 @@ export class ProductService {
 
   removeProduct(data): Observable<any> {
     return this.httpClient.delete<any>(this.url + `/${data.id}`);
+  }
+
+  addProduct(product: IProduct): Observable<IProduct> {
+    // TODO: Required for the InMemoryDb to work.
+    return this.httpClient.post<IProduct>(this.url, product);
+  }
+
+  editProduct(data) {
+    return this.httpClient.patch<any>(
+      this.urlId.replace(":id", data.id),
+      data,
+      this.httpOptions
+    );
   }
 }
