@@ -29,14 +29,49 @@ server.post("/register", (req, res) => {
   const user = users.filter((u) => u.username === req.body.username)[0];
 
   if (user === undefined || user === null) {
+    req.body.id = new Date().toDateString();
     collection.push(req.body).write();
-    console.log(db.users);
     res.send({
       ...formatUser(req.body),
       token: checkIfAdmin(req.body),
     });
   } else {
     res.status(500).send("User already exists");
+  }
+});
+
+server.post("/productos", (req, res) => {
+  const db = router.db;
+  const productos = readProducts();
+  const collection = db.get("productos");
+
+  if (req.body) {
+    req.body.id = new Date().toDateString();
+    collection.push(req.body).write();
+    res.send(req.body);
+  } else {
+    res.status(500).send("Error on create product");
+  }
+});
+
+server.post("/payments", (req, res) => {
+  const db = router.db;
+  const cart = readCart();
+  const collection = db.get("pedidos");
+
+  if (req.body) {
+    let reg = req;
+    console.log(req);
+    collection
+      .push({
+        UserID: req.body.UserID,
+        pedido: req.body,
+        createdAt: new Date().toISOString(),
+      })
+      .write();
+    res.send(req.body);
+  } else {
+    res.status(500).send("Error on create pedido");
   }
 });
 
@@ -73,4 +108,16 @@ function readUsers() {
   const dbRaw = fs.readFileSync("./db.json");
   const users = JSON.parse(dbRaw).users;
   return users;
+}
+
+function readProducts() {
+  const dbRaw = fs.readFileSync("./db.json");
+  const productos = JSON.parse(dbRaw).productos;
+  return productos;
+}
+
+function readCart() {
+  const dbRaw = fs.readFileSync("./db.json");
+  const cart = JSON.parse(dbRaw).cart;
+  return cart;
 }

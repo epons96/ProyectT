@@ -94,113 +94,54 @@
     },
     {
       "name": "client",
-      "lastName": "client",
+      "lastname": "apellido",
+      "phone": null,
       "email": "client@client.as",
-      "passwords": {
-        "password": "123",
-        "repeat": "123"
-      },
+      "role": "client",
       "username": "client",
-      "password": "123",
-      "role": "client"
-    },
-    {
-      "name": "nombre",
-      "lastName": "pueba",
-      "email": "admin@correo.bo",
       "passwords": {
-        "password": "123",
-        "repeat": "123"
+        "password": null,
+        "repeat": null
       },
-      "username": "admin@correo.bo",
-      "password": "123",
-      "role": "client"
+      "id": 798,
+      "password": "123"
     }
   ],
-  "productos": {
-    "meta": {
-      "pagination": {
-        "count": 7,
-        "total": 7
-      }
-    },
-    "data": [
-      {
-        "name": "Refresco Concentrado de Hierro (330ml)",
-        "shortDescription": "Refresco Concentrado de Hierro (330ml)",
-        "quantity": 23,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 1
-      },
-      {
-        "name": "Refresco Concentrado de Mate (330ml)",
-        "shortDescription": "Refresco Concentrado de Mate (330ml)",
-        "quantity": 42,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 2
-      },
-      {
-        "name": "Refresco Concentrado de Limon (330ml)",
-        "shortDescription": "Refresco Concentrado de Limon (330ml)",
-        "quantity": 65,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 3
-      },
-      {
-        "name": "Refresco Concentrado de Cola (330ml)",
-        "shortDescription": "Refresco Concentrado de Cola (330ml)",
-        "quantity": 10,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 4
-      },
-      {
-        "name": "Refresco Concentrado de Naranja (330ml)",
-        "shortDescription": "Refresco Concentrado de Naranja (330ml)",
-        "quantity": 2,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 5
-      },
-      {
-        "name": "Refresco Concentrado de Uva (330ml)",
-        "shortDescription": "Refresco Concentrado de Uva (330ml)",
-        "quantity": 20,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 6
-      },
-      {
-        "name": "Refresco Concentrado de Piña (330ml)",
-        "shortDescription": "Refresco Concentrado de Piña (330ml)",
-        "quantity": 29,
-        "rating": 5,
-        "price": 48,
-        "market": "international",
-        "id": 7
-      }
-    ]
-  },
-  "cart": [
+  "productos": [
     {
-      "name": "Refresco Concentrado de Limon (330ml)",
-      "shortDescription": "Refresco Concentrado de Limon (330ml)",
-      "quantity": 65,
-      "rating": 5,
-      "price": 48,
-      "market": "international",
-      "id": 3
+      "name": "Muslo de Pollo",
+      "quantity": 12,
+      "market": "nacional",
+      "description": null,
+      "price": 34,
+      "id": "Sun Oct 23 2022"
+    },
+    {
+      "name": "Croquetas de toro",
+      "quantity": 34,
+      "market": "internacional ",
+      "description": null,
+      "price": 99,
+      "id": "Sun Oct 23 2022"
+    },
+    {
+      "name": "Refresco de mango",
+      "quantity": 1,
+      "market": "habana",
+      "description": null,
+      "price": 23,
+      "id": "Sun Oct 23 2022"
+    },
+    {
+      "name": "Camisas blancas",
+      "quantity": 34,
+      "market": "militares",
+      "description": null,
+      "price": 2,
+      "id": "Sun Oct 23 2022"
     }
   ],
+  "cart": [],
   "carts": [
     {
       "id": 12509,
@@ -225,14 +166,161 @@
   ],
   "payments": [
     {
-      "name": "Refresco Concentrado de Limon (330ml)",
-      "shortDescription": "Refresco Concentrado de Limon (330ml)",
-      "quantity": 65,
-      "rating": 5,
-      "price": 48,
-      "market": "international",
-      "id": 3,
-      "UserId": 1
+      "name": "asd",
+      "quantity": 3,
+      "market": "4",
+      "description": null,
+      "price": 3,
+      "id": 4,
+      "UserId": 798,
+      "createdAt": "2022-10-24T00:09:35.083Z"
+    }
+  ],
+  "pedidos": [
+    {
+      "pedido": [
+        {
+          "name": "asda",
+          "quantity": 4,
+          "market": "5",
+          "description": null,
+          "price": 4,
+          "id": 77
+        },
+        {
+          "name": "asd",
+          "quantity": 3,
+          "market": "4",
+          "description": null,
+          "price": 3,
+          "id": 4
+        }
+      ],
+      "createdAt": "2022-10-24T00:49:27.912Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "asd",
+          "quantity": 3,
+          "market": "4",
+          "description": null,
+          "price": 3,
+          "id": 4
+        },
+        {
+          "name": "donde",
+          "quantity": 12,
+          "market": "on",
+          "description": "nada",
+          "price": 13,
+          "id": 1,
+          "UserID": "el user id"
+        },
+        {
+          "name": "asda",
+          "quantity": 4,
+          "market": "5",
+          "description": null,
+          "price": 4,
+          "id": 77,
+          "UserID": "el user id"
+        }
+      ],
+      "createdAt": "2022-10-24T00:57:10.579Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "asd",
+          "quantity": 3,
+          "market": "4",
+          "description": null,
+          "price": 3,
+          "id": 4,
+          "UserID": "el user id"
+        }
+      ],
+      "createdAt": "2022-10-24T00:58:07.522Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "donde",
+          "quantity": 12,
+          "market": "on",
+          "description": "nada",
+          "price": 13,
+          "id": 1,
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:03:36.468Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "asd",
+          "quantity": 3,
+          "market": "4",
+          "description": null,
+          "price": 3,
+          "id": 4,
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:07:18.585Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "asd",
+          "quantity": 3,
+          "market": "4",
+          "description": null,
+          "price": 3,
+          "id": 4,
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:08:12.683Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "asda",
+          "quantity": 4,
+          "market": "5",
+          "description": null,
+          "price": 4,
+          "id": 77,
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:25:47.573Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "donde",
+          "quantity": 12,
+          "market": "on",
+          "description": "nada",
+          "price": 13,
+          "id": 1,
+          "UserID": 798
+        },
+        {
+          "name": "sad",
+          "quantity": 2,
+          "market": "2324e2",
+          "description": null,
+          "price": 22,
+          "id": "Sun Oct 23 2022",
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:26:05.346Z"
     }
   ]
 }
