@@ -28,6 +28,13 @@
                 </mat-form-field>
                 <mat-form-field fxFlex="100" fxFlex.lt-md="100" appearance="outline">
                     <mat-label>
+                        <span>{{ 'Precio' }}</span>
+                    </mat-label>
+                    <input type="number" min="0" matInput [formControl]="form.get('price')" placeholder="{{ 'Precio' }}" />
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100" fxFlex.lt-md="100" appearance="outline">
+                    <mat-label>
                         <span>{{ 'Mercado' }}</span>
                     </mat-label>
                     <input type="text" matInput [formControl]="form.get('market')" placeholder="{{ 'Mercado' }}" />

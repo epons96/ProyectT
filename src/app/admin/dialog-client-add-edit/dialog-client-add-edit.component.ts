@@ -8,7 +8,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { ToastrService } from "ngx-toastr";
+// import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/core/user/user.service";
 import { format, isValidNumber } from "libphonenumber-js";
 import { LangChangeEvent, TranslateService } from "@ngx-translate/core";
@@ -60,12 +60,9 @@ export class DialogClientAddEditComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogClientAddEditComponent>,
-    private toastr: ToastrService,
     private fb: FormBuilder,
     private loggedInUserService: LoggedInUserService,
-    // private urlImageService: UrlImageService,
     private utilsService: UtilsService,
-    private showToastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UserService,
     public translate: TranslateService
@@ -139,10 +136,10 @@ export class DialogClientAddEditComponent implements OnInit {
       this.userService.editClient(newData).subscribe(
         (data) => {
           this.animate_button = false;
-          this.showToastr.success(
-            "El cliente ha sido modificado con éxito.",
-            "Felicidades!"
-          );
+          // this.showToastr.success(
+          //   "El cliente ha sido modificado con éxito.",
+          //   "Felicidades!"
+          // );
 
           this.dialogRef.close(data);
         },
@@ -151,7 +148,7 @@ export class DialogClientAddEditComponent implements OnInit {
           const message = error.error.message
             ? error.error.message
             : "Ha ocurrido un error.";
-          this.showToastr.error(message, "Error");
+          // this.showToastr.error(message, "Error");
           this.dialogRef.close(false);
         }
       );
@@ -169,10 +166,10 @@ export class DialogClientAddEditComponent implements OnInit {
       this.userService.addClient(newData).subscribe(
         (data) => {
           this.animate_button = false;
-          this.showToastr.success(
-            "El cliente ha sido creado con éxito.",
-            "Felicidades!"
-          );
+          // this.showToastr.success(
+          //   "El cliente ha sido creado con éxito.",
+          //   "Felicidades!"
+          // );
 
           this.dialogRef.close(data);
         },
@@ -181,7 +178,7 @@ export class DialogClientAddEditComponent implements OnInit {
           const message = error.error.message
             ? error.error.message
             : "Ha ocurrido un error.";
-          this.showToastr.error(message, "Error");
+          // this.showToastr.error(message, "Error");
           this.dialogRef.close(false);
         }
       );
