@@ -29,7 +29,7 @@ server.post("/register", (req, res) => {
   const user = users.filter((u) => u.username === req.body.username)[0];
 
   if (user === undefined || user === null) {
-    req.body.id = new Date().toDateString();
+    req.body.id = new Date().toISOString();
     collection.push(req.body).write();
     res.send({
       ...formatUser(req.body),
@@ -46,7 +46,7 @@ server.post("/productos", (req, res) => {
   const collection = db.get("productos");
 
   if (req.body) {
-    req.body.id = new Date().toDateString();
+    req.body.id = new Date().toISOString();
     collection.push(req.body).write();
     res.send(req.body);
   } else {

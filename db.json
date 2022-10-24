@@ -109,36 +109,36 @@
   ],
   "productos": [
     {
-      "name": "Muslo de Pollo",
+      "name": "Croquetas de pollo",
       "quantity": 12,
-      "market": "nacional",
-      "description": null,
-      "price": 34,
-      "id": "Sun Oct 23 2022"
-    },
-    {
-      "name": "Croquetas de toro",
-      "quantity": 34,
-      "market": "internacional ",
-      "description": null,
-      "price": 99,
-      "id": "Sun Oct 23 2022"
-    },
-    {
-      "name": "Refresco de mango",
-      "quantity": 1,
-      "market": "habana",
+      "market": "nac",
       "description": null,
       "price": 23,
-      "id": "Sun Oct 23 2022"
+      "id": "2022-10-24T01:45:07.797Z"
     },
     {
-      "name": "Camisas blancas",
+      "name": "Pescado ahumado",
       "quantity": 34,
-      "market": "militares",
+      "market": "internacional",
       "description": null,
-      "price": 2,
-      "id": "Sun Oct 23 2022"
+      "price": 55,
+      "id": "2022-10-24T01:45:27.074Z"
+    },
+    {
+      "name": "Muslo de pollo",
+      "quantity": 1,
+      "market": "Havana ",
+      "description": null,
+      "price": 33,
+      "id": "2022-10-24T01:46:33.740Z"
+    },
+    {
+      "name": "Guayaba verde",
+      "quantity": 23,
+      "market": "cuba",
+      "description": null,
+      "price": 77,
+      "id": "2022-10-24T01:46:48.472Z"
     }
   ],
   "cart": [],
@@ -321,6 +321,70 @@
         }
       ],
       "createdAt": "2022-10-24T01:26:05.346Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "Croquetas de toro",
+          "quantity": 34,
+          "market": "internacional ",
+          "description": null,
+          "price": 99,
+          "id": "Sun Oct 23 2022",
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:41:35.859Z"
+    },
+    {
+      "pedido": [
+        {
+          "name": "Refresco de mango",
+          "quantity": 1,
+          "market": "habana",
+          "description": null,
+          "price": 23,
+          "id": "Sun Oct 23 2022",
+          "UserID": 798
+        },
+        {
+          "name": "Guayaba verde",
+          "quantity": 23,
+          "market": "cuba",
+          "description": null,
+          "price": 77,
+          "id": "2022-10-24T01:46:48.472Z",
+          "UserID": 798
+        },
+        {
+          "name": "Pescado ahumado",
+          "quantity": 34,
+          "market": "internacional",
+          "description": null,
+          "price": 55,
+          "id": "2022-10-24T01:45:27.074Z",
+          "UserID": 798
+        },
+        {
+          "name": "Croquetas de pollo",
+          "quantity": 12,
+          "market": "nac",
+          "description": null,
+          "price": 23,
+          "id": "2022-10-24T01:45:07.797Z",
+          "UserID": 798
+        },
+        {
+          "name": "Muslo de pollo",
+          "quantity": 1,
+          "market": "Havana ",
+          "description": null,
+          "price": 33,
+          "id": "2022-10-24T01:46:33.740Z",
+          "UserID": 798
+        }
+      ],
+      "createdAt": "2022-10-24T01:51:37.651Z"
     }
   ]
 }
